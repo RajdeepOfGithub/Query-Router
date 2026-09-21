@@ -1,0 +1,10 @@
+{
+  "calls": 18,
+  "cost_usd": 0.00297,
+  "by_label": {
+    "classify": 0.00037,
+    "execute:sql": 0.00138,
+    "execute:rag": 0.00033,
+    "execute:both": 0.00091
+  }
+}

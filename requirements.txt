@@ -1,5 +1,15 @@
-openai==3.3.0
+arelle-release==2.45.1
+chromadb==1.5.9
 instructor==1.17.0
+jiter==0.14.0
+numpy==2.5.3
+openai==3.3.0
 pydantic==2.13.5
-python-dotenv==1.2.3
 pytest==9.1.1
+python-dotenv==1.2.3
+rank-bm25==0.2.2
+regex==2026.9.10
+sentence-transformers==6.0.1
+sqlparse==0.6.0
+torch==2.14.0
+transformers==5.17.0
