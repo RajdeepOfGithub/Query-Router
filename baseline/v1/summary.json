@@ -1,0 +1,104 @@
+{
+  "overall": "12/18",
+  "accuracy": 0.667,
+  "by_route": {
+    "sql": "6/6",
+    "rag": "2/4",
+    "both": "4/4",
+    "ambiguous": "0/4"
+  },
+  "misclassified": [
+    {
+      "id": "r08",
+      "expected": "rag",
+      "got": "both",
+      "confidence": 0.8
+    },
+    {
+      "id": "r10",
+      "expected": "rag",
+      "got": "both",
+      "confidence": 0.9
+    },
+    {
+      "id": "r15",
+      "expected": "ambiguous",
+      "got": "sql",
+      "confidence": 0.9
+    },
+    {
+      "id": "r16",
+      "expected": "ambiguous",
+      "got": "rag",
+      "confidence": 0.9
+    },
+    {
+      "id": "r17",
+      "expected": "ambiguous",
+      "got": "rag",
+      "confidence": 0.9
+    },
+    {
+      "id": "r18",
+      "expected": "ambiguous",
+      "got": "sql",
+      "confidence": 0.9
+    }
+  ],
+  "ambiguous_confidently_routed": [
+    {
+      "id": "r15",
+      "got": "sql",
+      "confidence": 0.9
+    },
+    {
+      "id": "r16",
+      "got": "rag",
+      "confidence": 0.9
+    },
+    {
+      "id": "r17",
+      "got": "rag",
+      "confidence": 0.9
+    },
+    {
+      "id": "r18",
+      "got": "sql",
+      "confidence": 0.9
+    }
+  ],
+  "confusion": {
+    "sql": {
+      "sql": 6,
+      "rag": 0,
+      "both": 0,
+      "ambiguous": 0
+    },
+    "rag": {
+      "sql": 0,
+      "rag": 2,
+      "both": 2,
+      "ambiguous": 0
+    },
+    "both": {
+      "sql": 0,
+      "rag": 0,
+      "both": 4,
+      "ambiguous": 0
+    },
+    "ambiguous": {
+      "sql": 2,
+      "rag": 2,
+      "both": 0,
+      "ambiguous": 0
+    }
+  },
+  "model": "gpt-4o-mini",
+  "timestamp": "2026-09-21T21:57:24.908188+00:00",
+  "git": {
+    "commit": "HEAD",
+    "dirty": true
+  },
+  "calls": 18,
+  "cost_usd": 0.00192
+}

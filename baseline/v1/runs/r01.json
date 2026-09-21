@@ -1,0 +1,18 @@
+{
+  "id": "r01",
+  "question": "What was total net revenue for the second quarter of 2026?",
+  "expected": "sql",
+  "route": "sql",
+  "confidence": 1.0,
+  "reasoning": "The question specifically asks for a reported figure, which is total net revenue for a defined period.",
+  "correct": true,
+  "source": "text-to-sql e01 (also financial-rag q02)",
+  "calls": [
+    {
+      "prompt": 544,
+      "completion": 34,
+      "cached": 0
+    }
+  ],
+  "cost_usd": 0.000102
+}

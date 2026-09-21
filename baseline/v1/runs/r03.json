@@ -1,0 +1,18 @@
+{
+  "id": "r03",
+  "question": "What was total noninterest expense in fiscal year 2025?",
+  "expected": "sql",
+  "route": "sql",
+  "confidence": 1.0,
+  "reasoning": "The question specifically asks for a reported figure, which is the total noninterest expense for fiscal year 2025.",
+  "correct": true,
+  "source": "text-to-sql e03",
+  "calls": [
+    {
+      "prompt": 543,
+      "completion": 38,
+      "cached": 0
+    }
+  ],
+  "cost_usd": 0.000104
+}

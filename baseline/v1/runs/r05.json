@@ -1,0 +1,18 @@
+{
+  "id": "r05",
+  "question": "What was the provision for credit losses in the second quarter of 2026?",
+  "expected": "sql",
+  "route": "sql",
+  "confidence": 0.9,
+  "reasoning": "The question specifically asks for a reported figure, which is the provision for credit losses in a defined period.",
+  "correct": true,
+  "source": "text-to-sql e05 (also financial-rag q05)",
+  "calls": [
+    {
+      "prompt": 546,
+      "completion": 36,
+      "cached": 0
+    }
+  ],
+  "cost_usd": 0.000103
+}

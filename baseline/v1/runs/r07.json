@@ -1,0 +1,18 @@
+{
+  "id": "r07",
+  "question": "Why did investment banking fees increase in the second quarter of 2026?",
+  "expected": "rag",
+  "route": "rag",
+  "confidence": 0.9,
+  "reasoning": "The question asks for an explanation regarding the increase in investment banking fees, which requires context and commentary rather than just reported figures.",
+  "correct": true,
+  "source": "financial-rag q09",
+  "calls": [
+    {
+      "prompt": 545,
+      "completion": 40,
+      "cached": 0
+    }
+  ],
+  "cost_usd": 0.000106
+}

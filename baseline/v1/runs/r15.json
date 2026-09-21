@@ -1,0 +1,18 @@
+{
+  "id": "r15",
+  "question": "How much did they earn in Q2 2026?",
+  "expected": "ambiguous",
+  "route": "sql",
+  "confidence": 0.9,
+  "reasoning": "The question specifically asks for a reported figure regarding earnings in Q2 2026, which can be answered with data from the financial statements.",
+  "correct": false,
+  "source": "constructed (mirrors text-to-sql e07 failure)",
+  "calls": [
+    {
+      "prompt": 542,
+      "completion": 43,
+      "cached": 0
+    }
+  ],
+  "cost_usd": 0.000107
+}

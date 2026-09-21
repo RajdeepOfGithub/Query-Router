@@ -1,0 +1,18 @@
+{
+  "id": "r08",
+  "question": "What happened with the Visa share exchange and what was its financial impact?",
+  "expected": "rag",
+  "route": "both",
+  "confidence": 0.8,
+  "reasoning": "The question asks for both an explanation of the Visa share exchange event and its financial impact, which requires reported figures and context.",
+  "correct": false,
+  "source": "financial-rag q10",
+  "calls": [
+    {
+      "prompt": 544,
+      "completion": 40,
+      "cached": 0
+    }
+  ],
+  "cost_usd": 0.000106
+}
