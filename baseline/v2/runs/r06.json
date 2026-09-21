@@ -1,0 +1,19 @@
+{
+  "id": "r06",
+  "question": "What was net interest income for Q2 2026?",
+  "expected": "sql",
+  "route": "sql",
+  "confidence": 0.9,
+  "reasoning": "The question specifically asks for a reported figure, which is net interest income for a defined period (Q2 2026).",
+  "ambiguity_disclosure": null,
+  "correct": true,
+  "source": "text-to-sql e12",
+  "calls": [
+    {
+      "prompt": 617,
+      "completion": 47,
+      "cached": 0
+    }
+  ],
+  "cost_usd": 0.000121
+}

@@ -1,0 +1,19 @@
+{
+  "id": "r16",
+  "question": "How did the firm do in the second quarter of 2026?",
+  "expected": "ambiguous",
+  "route": "both",
+  "confidence": 0.8,
+  "reasoning": "The question asks how the firm performed in Q2 2026, which could refer to reported financial figures as well as the context or explanations behind that performance. Both aspects are relevant to fully understand the firm's performance.",
+  "ambiguity_disclosure": "The question could be interpreted as asking for either reported figures (like revenue or net income) or explanations regarding performance drivers and context.",
+  "correct": true,
+  "source": "constructed",
+  "calls": [
+    {
+      "prompt": 619,
+      "completion": 89,
+      "cached": 0
+    }
+  ],
+  "cost_usd": 0.000146
+}

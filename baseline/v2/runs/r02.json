@@ -1,0 +1,19 @@
+{
+  "id": "r02",
+  "question": "What were total deposits as of June 30, 2026?",
+  "expected": "sql",
+  "route": "sql",
+  "confidence": 0.9,
+  "reasoning": "The question specifically asks for a reported figure regarding total deposits as of a specific date, which aligns with the capabilities of the sql backend.",
+  "ambiguity_disclosure": null,
+  "correct": true,
+  "source": "text-to-sql e02",
+  "calls": [
+    {
+      "prompt": 619,
+      "completion": 48,
+      "cached": 0
+    }
+  ],
+  "cost_usd": 0.000122
+}

@@ -1,0 +1,19 @@
+{
+  "id": "r18",
+  "question": "How big is the Consumer & Community Banking business?",
+  "expected": "ambiguous",
+  "route": "rag",
+  "confidence": 0.9,
+  "reasoning": "The question asks for an explanation of the size of the Consumer & Community Banking business, which likely involves context and commentary rather than just a reported figure.",
+  "ambiguity_disclosure": null,
+  "correct": false,
+  "source": "constructed",
+  "calls": [
+    {
+      "prompt": 615,
+      "completion": 51,
+      "cached": 0
+    }
+  ],
+  "cost_usd": 0.000123
+}

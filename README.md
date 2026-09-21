@@ -29,3 +29,16 @@ python -m venv .venv && .venv/Scripts/pip install -r requirements.txt   # OPENAI
 All four ambiguous questions were routed to a single route at confidence 0.9, which is the
 failure that matters here. The model's stated confidence doesn't reflect genuine unclarity. r08 and r10
 (rag) went to "both": each asks for an impact or a figure that only exists in prose/transcript.
+
+## v2 ($0.0022): r15 relabeled sql; ambiguous = "both" + disclosure
+
+| route | correct |
+|---|---|
+| sql | 7/7 |
+| rag | 2/4 |
+| both | 4/4 |
+| ambiguous (graded as both + disclosure) | 1/3 |
+| **overall** | **14/18** |
+
+r16 now routes to both with a disclosure. r17 and r18 still go to rag at 0.9. Nothing previously
+correct regressed. r08 and r10 (rag) still go to both, and r08 now carries a disclosure it shouldn't.

@@ -1,0 +1,19 @@
+{
+  "id": "r09",
+  "question": "What did Jeremy Barnum say about the sustainability of the investment banking and markets results?",
+  "expected": "rag",
+  "route": "rag",
+  "confidence": 0.9,
+  "reasoning": "The question asks for commentary from Jeremy Barnum regarding the sustainability of investment banking and markets results, which falls under management commentary and explanations rather than reported figures.",
+  "ambiguity_disclosure": null,
+  "correct": true,
+  "source": "financial-rag q12",
+  "calls": [
+    {
+      "prompt": 622,
+      "completion": 52,
+      "cached": 0
+    }
+  ],
+  "cost_usd": 0.000124
+}

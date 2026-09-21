@@ -1,13 +1,15 @@
 """Run the router over data/routing_eval.jsonl and grade against ground-truth routes.
 
-Exact match only: a 'both' question classified as 'sql' or 'rag' is wrong, with no
-partial credit for picking one half. The failure mode tracked separately:
-ambiguous questions routed to a single route with confidence >= CONFIDENT
-(false confidence on a genuinely unclear question).
+Grading (v2):
+  sql / rag / both ground truth: exact route match. A 'both' question classified as
+    'sql' or 'rag' is wrong; there is no partial credit for picking one half.
+  ambiguous ground truth: correct = route 'both' AND a non-empty ambiguity_disclosure
+    naming the ambiguity (disclose, don't guess). Routing it to a single route is wrong;
+    doing so at confidence >= CONFIDENT is tracked as false confidence.
 
 Usage (from the repo root):
     python src/run_routing_eval.py              # cost estimate only
-    python src/run_routing_eval.py --confirm    # -> baseline/v1/runs/{id}.json + summary.json
+    python src/run_routing_eval.py --confirm    # -> baseline/v2/runs/{id}.json + summary.json
 """
 from __future__ import annotations
 
@@ -23,8 +25,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from classify import MODEL, ROOT, classify  # noqa: E402
 
 QUESTIONS = ROOT / "data" / "routing_eval.jsonl"
-DEFAULT_OUT = ROOT / "baseline" / "v1"
-ROUTES = ["sql", "rag", "both", "ambiguous"]
+DEFAULT_OUT = ROOT / "baseline" / "v2"
+ROUTES = ["sql", "rag", "both", "ambiguous"]  # ground-truth labels; the classifier emits the first three
 CONFIDENT = 0.7
 PRICE_IN, PRICE_CACHED, PRICE_OUT = 0.15, 0.075, 0.60  # gpt-4o-mini, USD per 1M tokens
 EST_TOKENS = (750, 80)  # prompt, completion per question
@@ -32,6 +34,12 @@ EST_TOKENS = (750, 80)  # prompt, completion per question
 
 def read_questions() -> list[dict]:
     return [json.loads(x) for x in QUESTIONS.read_text(encoding="utf-8").splitlines() if x.strip()]
+
+
+def is_correct(expected: str, route: str, disclosure: str | None) -> bool:
+    if expected == "ambiguous":
+        return route == "both" and bool((disclosure or "").strip())
+    return route == expected
 
 
 def cost(calls: list[dict]) -> float:
@@ -53,7 +61,9 @@ def grade(results: list[dict]) -> dict:
                           for r in results if not r["correct"]],
         "ambiguous_confidently_routed": [
             {"id": r["id"], "got": r["route"], "confidence": r["confidence"]} for r in results
-            if r["expected"] == "ambiguous" and r["route"] != "ambiguous" and r["confidence"] >= CONFIDENT],
+            if r["expected"] == "ambiguous" and r["route"] in ("sql", "rag") and r["confidence"] >= CONFIDENT],
+        "spurious_disclosures": [r["id"] for r in results
+                                 if r["expected"] != "ambiguous" and r.get("ambiguity_disclosure")],
         "confusion": {e: {g: sum(1 for r in results if r["expected"] == e and r["route"] == g) for g in ROUTES}
                       for e in ROUTES},
     }
@@ -84,13 +94,14 @@ def main() -> None:
 
         d = classify(q["question"], on_response=record)
         r = {"id": q["id"], "question": q["question"], "expected": q["route"], "route": d.route,
-             "confidence": d.confidence, "reasoning": d.reasoning, "correct": d.route == q["route"],
+             "confidence": d.confidence, "reasoning": d.reasoning, "ambiguity_disclosure": d.ambiguity_disclosure,
+             "correct": is_correct(q["route"], d.route, d.ambiguity_disclosure),
              "source": q["source"], "calls": calls, "cost_usd": round(cost(calls), 6)}
         (runs / f"{q['id']}.json").write_text(json.dumps(r, indent=2), encoding="utf-8")
         results.append(r)
         all_calls += calls
         print(f"{q['id']} expected={q['route']:9s} got={d.route:9s} conf={d.confidence:.2f} "
-              f"{'OK ' if r['correct'] else 'MISS'} {d.reasoning[:110]}")
+              f"{'OK ' if r['correct'] else 'MISS'} {(d.ambiguity_disclosure or d.reasoning)[:110]}")
 
     summary = grade(results)
     git = lambda *a: subprocess.run(["git", *a], cwd=ROOT, capture_output=True, text=True).stdout.strip()  # noqa: E731

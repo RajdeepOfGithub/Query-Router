@@ -1,0 +1,19 @@
+{
+  "id": "r11",
+  "question": "Why did share repurchases increase in 2025 compared with 2024, and by how much?",
+  "expected": "both",
+  "route": "both",
+  "confidence": 0.9,
+  "reasoning": "The question asks for both the increase in share repurchases (a reported figure) and the reasons behind that increase (explanation), which requires information from both backends.",
+  "ambiguity_disclosure": null,
+  "correct": true,
+  "source": "fresh",
+  "calls": [
+    {
+      "prompt": 626,
+      "completion": 55,
+      "cached": 0
+    }
+  ],
+  "cost_usd": 0.000127
+}

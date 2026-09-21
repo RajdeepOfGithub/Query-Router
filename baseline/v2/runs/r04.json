@@ -1,0 +1,19 @@
+{
+  "id": "r04",
+  "question": "What was diluted earnings per share for Q2 2026?",
+  "expected": "sql",
+  "route": "sql",
+  "confidence": 0.9,
+  "reasoning": "The question specifically asks for a reported figure, which is the diluted earnings per share for Q2 2026.",
+  "ambiguity_disclosure": null,
+  "correct": true,
+  "source": "text-to-sql e04",
+  "calls": [
+    {
+      "prompt": 618,
+      "completion": 44,
+      "cached": 0
+    }
+  ],
+  "cost_usd": 0.000119
+}

@@ -1,0 +1,19 @@
+{
+  "id": "r14",
+  "question": "The provision for credit losses fell in Q2 2026 from a year earlier. What was the provision, and why did it decline?",
+  "expected": "both",
+  "route": "both",
+  "confidence": 0.9,
+  "reasoning": "The question asks for a specific reported figure regarding the provision for credit losses and also seeks an explanation for the decline, which requires context and commentary.",
+  "ambiguity_disclosure": null,
+  "correct": true,
+  "source": "fresh",
+  "calls": [
+    {
+      "prompt": 633,
+      "completion": 50,
+      "cached": 0
+    }
+  ],
+  "cost_usd": 0.000125
+}

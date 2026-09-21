@@ -1,0 +1,19 @@
+{
+  "id": "r10",
+  "question": "Why was the NII excluding Markets guidance revised upward, and to what figure?",
+  "expected": "rag",
+  "route": "both",
+  "confidence": 0.9,
+  "reasoning": "The question asks for both the revised figure for NII excluding Markets and the reasons behind the upward revision, which requires information from both reported figures and management commentary.",
+  "ambiguity_disclosure": null,
+  "correct": false,
+  "source": "financial-rag q13",
+  "calls": [
+    {
+      "prompt": 621,
+      "completion": 53,
+      "cached": 0
+    }
+  ],
+  "cost_usd": 0.000125
+}

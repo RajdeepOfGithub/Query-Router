@@ -1,5 +1,11 @@
 """Route a question to the SQL (XBRL facts) backend, the RAG (filing prose +
-earnings call) backend, both, or flag it as ambiguous.
+earnings call) backend, or both.
+
+Ambiguity is disclosed rather than guessed around, the same pattern as Text-to-SQL's
+repurchase handling. A question that either backend could answer alone, but neither
+fully answers as asked, routes to "both" with ambiguity_disclosure naming the competing
+readings. (v1 had a separate "ambiguous" route, and it was never chosen: 0/4, each
+question routed elsewhere at 0.9 confidence.)
 
 Classification only: nothing here calls either backend.
 """
@@ -33,22 +39,29 @@ ROUTES
   are rag.
 - both: the question explicitly asks for a reported figure (or the size of a change in one) AND
   for the reasons or context behind it. Both parts must be requested. Topic overlap is not enough.
-- ambiguous: the question can't be routed without guessing. Either reasonable readings need
-  different routes, or it doesn't pin down what is being asked for (which measure, which sense of a
-  vague word like "earn", "do", "big", "concern"), so any route would rest on an assumption the user
-  didn't make. Use this instead of choosing a route when you would have to guess.
 
-CONFIDENCE: your probability (0-1) that the chosen route is the one a careful analyst would pick.
-If you can construct a reasonable reading that needs a different route, your confidence in a
-single route should be low, and "ambiguous" is probably the right route."""
+AMBIGUITY
+- If a question could reasonably be answered by either backend alone but neither fully addresses it
+  as asked (a vague ask like how a business "did", whether something was "a concern", how "big"
+  something is, where one reasonable reading wants reported figures and another wants explanation
+  or commentary), route=both and fill ambiguity_disclosure: name the competing readings and say
+  that the answer covers both. Do not pick one reading and hide the other.
+- If every reasonable reading is answerable by the same backend (e.g. it's only unclear WHICH
+  reported figure is meant), route to that backend and leave ambiguity_disclosure null; the backend
+  handles figure-level ambiguity.
+- Leave ambiguity_disclosure null for clear questions, including clear "both" questions.
 
-Route = Literal["sql", "rag", "both", "ambiguous"]
+CONFIDENCE: your probability (0-1) that the chosen route is the one a careful analyst would pick."""
+
+Route = Literal["sql", "rag", "both"]
 
 
 class RouteDecision(BaseModel):
     route: Route
     confidence: float = Field(ge=0.0, le=1.0)
     reasoning: str = Field(description="one or two sentences: why this route")
+    ambiguity_disclosure: str | None = Field(
+        default=None, description="competing readings when the route is 'both' because the question is ambiguous")
 
 
 @lru_cache(maxsize=1)

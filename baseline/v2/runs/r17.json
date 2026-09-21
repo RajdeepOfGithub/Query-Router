@@ -1,0 +1,19 @@
+{
+  "id": "r17",
+  "question": "Was credit quality a concern for JPMorgan in Q2 2026?",
+  "expected": "ambiguous",
+  "route": "rag",
+  "confidence": 0.9,
+  "reasoning": "The question asks for an explanation regarding credit quality as a concern, which requires context and commentary rather than just reported figures.",
+  "ambiguity_disclosure": null,
+  "correct": false,
+  "source": "constructed",
+  "calls": [
+    {
+      "prompt": 620,
+      "completion": 45,
+      "cached": 0
+    }
+  ],
+  "cost_usd": 0.00012
+}

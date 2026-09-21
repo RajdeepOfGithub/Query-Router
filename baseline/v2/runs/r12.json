@@ -1,0 +1,19 @@
+{
+  "id": "r12",
+  "question": "By how much did investment banking fees grow in Q2 2026 versus Q2 2025, and what drove the growth?",
+  "expected": "both",
+  "route": "both",
+  "confidence": 0.9,
+  "reasoning": "The question asks for a specific reported figure regarding the growth of investment banking fees and also seeks an explanation of the drivers behind that growth, which requires insights from both financial data and contextual commentary.",
+  "ambiguity_disclosure": null,
+  "correct": true,
+  "source": "fresh",
+  "calls": [
+    {
+      "prompt": 632,
+      "completion": 59,
+      "cached": 0
+    }
+  ],
+  "cost_usd": 0.00013
+}

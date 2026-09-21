@@ -1,0 +1,19 @@
+{
+  "id": "r13",
+  "question": "Noninterest expense rose in 2025. How large was the increase, and what were the main drivers?",
+  "expected": "both",
+  "route": "both",
+  "confidence": 0.9,
+  "reasoning": "The question asks for both the reported figure of the increase in noninterest expense and the explanation of the main drivers behind that increase, which requires information from both the financial statements and management commentary.",
+  "ambiguity_disclosure": null,
+  "correct": true,
+  "source": "fresh",
+  "calls": [
+    {
+      "prompt": 627,
+      "completion": 59,
+      "cached": 0
+    }
+  ],
+  "cost_usd": 0.000129
+}

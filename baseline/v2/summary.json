@@ -1,0 +1,85 @@
+{
+  "overall": "14/18",
+  "accuracy": 0.778,
+  "by_route": {
+    "sql": "7/7",
+    "rag": "2/4",
+    "both": "4/4",
+    "ambiguous": "1/3"
+  },
+  "misclassified": [
+    {
+      "id": "r08",
+      "expected": "rag",
+      "got": "both",
+      "confidence": 0.9
+    },
+    {
+      "id": "r10",
+      "expected": "rag",
+      "got": "both",
+      "confidence": 0.9
+    },
+    {
+      "id": "r17",
+      "expected": "ambiguous",
+      "got": "rag",
+      "confidence": 0.9
+    },
+    {
+      "id": "r18",
+      "expected": "ambiguous",
+      "got": "rag",
+      "confidence": 0.9
+    }
+  ],
+  "ambiguous_confidently_routed": [
+    {
+      "id": "r17",
+      "got": "rag",
+      "confidence": 0.9
+    },
+    {
+      "id": "r18",
+      "got": "rag",
+      "confidence": 0.9
+    }
+  ],
+  "spurious_disclosures": [
+    "r08"
+  ],
+  "confusion": {
+    "sql": {
+      "sql": 7,
+      "rag": 0,
+      "both": 0,
+      "ambiguous": 0
+    },
+    "rag": {
+      "sql": 0,
+      "rag": 2,
+      "both": 2,
+      "ambiguous": 0
+    },
+    "both": {
+      "sql": 0,
+      "rag": 0,
+      "both": 4,
+      "ambiguous": 0
+    },
+    "ambiguous": {
+      "sql": 0,
+      "rag": 2,
+      "both": 1,
+      "ambiguous": 0
+    }
+  },
+  "model": "gpt-4o-mini",
+  "timestamp": "2026-09-21T22:00:48.451420+00:00",
+  "git": {
+    "commit": "861b55afd1736ada3421709d2e2f14145583c407",
+    "dirty": true
+  },
+  "calls": 18,
+  "cost_usd": 0.00224
+}
