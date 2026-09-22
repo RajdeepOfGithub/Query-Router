@@ -1,0 +1,53 @@
+{
+  "routing_accuracy": "13/18",
+  "answer_accuracy": "8/18",
+  "by_expected_route": {
+    "sql": "routing 7/7, answer 6/7",
+    "rag": "routing 2/4, answer 1/4",
+    "both": "routing 4/4, answer 1/4",
+    "ambiguous": "routing 0/3, answer 0/3"
+  },
+  "routing_right_answer_right": [
+    "r01",
+    "r02",
+    "r03",
+    "r04",
+    "r05",
+    "r06",
+    "r11"
+  ],
+  "routing_right_answer_wrong": [
+    "r07",
+    "r09",
+    "r12",
+    "r13",
+    "r14",
+    "r15"
+  ],
+  "routing_wrong_answer_right": [
+    "r08"
+  ],
+  "routing_wrong_answer_wrong": [
+    "r10",
+    "r16",
+    "r17",
+    "r18"
+  ],
+  "errors": [],
+  "usage": {
+    "calls": 118,
+    "cost_usd": 0.02132,
+    "by_label": {
+      "classify": 0.0022,
+      "execute:sql": 0.00761,
+      "execute:rag": 0.00117,
+      "grade": 0.0008,
+      "execute:both": 0.00954
+    }
+  },
+  "timestamp": "2026-09-22T00:49:14.309356+00:00",
+  "git": {
+    "commit": "4550c08d4da0f2f4d480ed5638f273c8b7d1d553",
+    "dirty": true
+  }
+}

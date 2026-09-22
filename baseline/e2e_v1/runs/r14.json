@@ -1,0 +1,303 @@
+{
+  "id": "r14",
+  "question": "The provision for credit losses fell in Q2 2026 from a year earlier. What was the provision, and why did it decline?",
+  "expected_route": "both",
+  "route": "both",
+  "decision": {
+    "route": "both",
+    "confidence": 0.9,
+    "reasoning": "The question asks for a specific reported figure (the provision for credit losses) and also seeks an explanation for the decline, which requires context and commentary.",
+    "ambiguity_disclosure": null
+  },
+  "routing_correct": true,
+  "answer_type": "value+claims",
+  "values": {
+    "Q2 2026 provision for credit losses": true
+  },
+  "claims_score": 0.0,
+  "answer_correct": false,
+  "final_answer": "The figure, from structured XBRL data [SQL]:\n$2,515M for 2026-04-01 to 2026-06-30.\nMeasure: Provision for Loan, Lease, and Other Losses (us-gaap:ProvisionForLoanLeaseAndOtherLosses).\nWhy this variant: Selected the consolidated variant with no dimensions as it represents the total provision for credit losses.\n\nExplanation, from the filings and earnings call:\nIn Q2 2026, the provision for credit losses was $4.2 billion. It declined from the prior year, where the provision was $4.7 billion. The decline was largely driven by improvements in home prices in the first quarter of 2026 [RAG-1][RAG-4].\n\nCaution: financial-rag's own citation check did not confirm 2 of 2 cited claims in the explanation.\n\nFigure check against structured data (explanation drawn from Q2-2026 filings):\n- Unconfirmed: the explanation states $4.2 billion (2026-04-01 to 2026-06-30), which matches no structured figure for that period (possibly a different measure). Where it describes the same item, the [SQL] figure takes precedence.\n- Unconfirmed: the explanation states $4.7 billion (no period stated), which matches no structured figure. Where it describes the same item, the [SQL] figures take precedence.\n\nSources:\n[SQL] Text-to-SQL over XBRL facts: us-gaap:ProvisionForLoanLeaseAndOtherLosses (consolidated), 2026-04-01 to 2026-06-30; status=answered, confidence=0.4 (FLAGGED: back-translation mismatch on metric: SQL answers 'What is the Provision for Loan, Lease, and Other Losses for the firm-wide consolidated total for the three months ended June 30, 2026?' (The original metric refers to 'provision for credit losses' while the back-translated metric refers to 'Provision for Loan, Lease, and Other Losses', which are not the same.))\n[RAG-1] financial-rag passage JPMC_10-Q_Q2-2026_165 (10-Q, Q2-2026); citation NOT supported by passage\n[RAG-4] financial-rag passage JPMC_10-Q_Q2-2026_91 (10-Q, Q2-2026); citation NOT supported by passage",
+  "conflicts": [
+    {
+      "rag_figure": "$4.2 billion",
+      "rag_value": 4200000000.0,
+      "rag_period": "2026-04-01 to 2026-06-30",
+      "period_basis": "stated in answer text",
+      "rag_filing_periods": [
+        "Q2-2026"
+      ],
+      "kind": "unmatched_same_period",
+      "resolution": "not confirmed by structured data; SQL figures take precedence where they describe the same item"
+    },
+    {
+      "rag_figure": "$4.7 billion",
+      "rag_value": 4700000000.0,
+      "rag_period": null,
+      "period_basis": "period unconfirmed",
+      "rag_filing_periods": [
+        "Q2-2026"
+      ],
+      "kind": "unmatched",
+      "resolution": "not confirmed by structured data; SQL figures take precedence where they describe the same item"
+    }
+  ],
+  "sql_raw": {
+    "answer": {
+      "question": "The provision for credit losses fell in Q2 2026 from a year earlier. What was the provision, and why did it decline?",
+      "status": "answered",
+      "text": "$2,515M for 2026-04-01 to 2026-06-30.\nMeasure: Provision for Loan, Lease, and Other Losses (us-gaap:ProvisionForLoanLeaseAndOtherLosses).\nWhy this variant: Selected the consolidated variant with no dimensions as it represents the total provision for credit losses.",
+      "sql": "SELECT concept, dimensions_json, period_start, period_end, value_numeric, unit, source_document FROM facts WHERE concept = 'us-gaap:ProvisionForLoanLeaseAndOtherLosses' AND dimensions_json = '{}' AND period_start = '2026-04-01' AND period_end = '2026-06-30'",
+      "plan": {
+        "intent": "read",
+        "not_available_reason": null,
+        "reasoning": "The concept 'us-gaap:ProvisionForLoanLeaseAndOtherLosses' for the period Q2 2026 is available and shows the provision amount. I selected the consolidated variant with no dimensions as it represents the total provision for credit losses.",
+        "sql": "SELECT concept, dimensions_json, period_start, period_end, value_numeric, unit, source_document FROM facts WHERE concept = 'us-gaap:ProvisionForLoanLeaseAndOtherLosses' AND dimensions_json = '{}' AND period_start = '2026-04-01' AND period_end = '2026-06-30'",
+        "target": {
+          "concept": "us-gaap:ProvisionForLoanLeaseAndOtherLosses",
+          "dimensions_json": "{}"
+        },
+        "target_period_start": "2026-04-01",
+        "target_period_end": "2026-06-30",
+        "ambiguity": "none",
+        "chosen_dimension_reason": "Selected the consolidated variant with no dimensions as it represents the total provision for credit losses.",
+        "alternatives": [],
+        "clarification_question": null
+      },
+      "measure": {
+        "concept": "us-gaap:ProvisionForLoanLeaseAndOtherLosses",
+        "dimensions_json": "{}",
+        "period_start": "2026-04-01",
+        "period_end": "2026-06-30",
+        "value_numeric": 2515000000.0,
+        "unit": "iso4217:USD",
+        "label": "Provision for Loan, Lease, and Other Losses",
+        "dimension_labels": {}
+      },
+      "alternatives": [],
+      "ambiguity": "none",
+      "rows": [
+        [
+          "us-gaap:ProvisionForLoanLeaseAndOtherLosses",
+          "{}",
+          "2026-04-01",
+          "2026-06-30",
+          2515000000.0,
+          "iso4217:USD",
+          "JPMC_10-Q_Q2-2026"
+        ]
+      ],
+      "columns": [
+        "concept",
+        "dimensions_json",
+        "period_start",
+        "period_end",
+        "value_numeric",
+        "unit",
+        "source_document"
+      ],
+      "block_reason": null,
+      "reason": null,
+      "system_notes": []
+    },
+    "confidence": {
+      "score": 0.4,
+      "flagged": true,
+      "reasons": [
+        "back-translation mismatch on metric: SQL answers 'What is the Provision for Loan, Lease, and Other Losses for the firm-wide consolidated total for the three months ended June 30, 2026?' (The original metric refers to 'provision for credit losses' while the back-translated metric refers to 'Provision for Loan, Lease, and Other Losses', which are not the same.)"
+      ],
+      "components": {
+        "back_translation": 0.0,
+        "magnitude": 1.0,
+        "unit_scale": 1.0
+      },
+      "back_translation": {
+        "original_question": "The provision for credit losses fell in Q2 2026 from a year earlier. What was the provision, and why did it decline?",
+        "back_translated_question": "What is the Provision for Loan, Lease, and Other Losses for the firm-wide consolidated total for the three months ended June 30, 2026?",
+        "judgment": {
+          "original_metric": "provision for credit losses",
+          "original_period": "Q2 2026",
+          "original_scope": "firm-wide consolidated total",
+          "back_translated_metric": "Provision for Loan, Lease, and Other Losses",
+          "back_translated_period": "three months ended June 30, 2026",
+          "back_translated_scope": "firm-wide consolidated total",
+          "metric": "mismatch",
+          "period": "match",
+          "scope": "match",
+          "explanation": "The original metric refers to 'provision for credit losses' while the back-translated metric refers to 'Provision for Loan, Lease, and Other Losses', which are not the same."
+        },
+        "period_source": "code"
+      },
+      "sanity": {
+        "checks": [
+          {
+            "name": "non_null",
+            "status": "pass",
+            "detail": "1 row(s), value present"
+          },
+          {
+            "name": "magnitude",
+            "status": "pass",
+            "detail": "1 comparable quarter value(s), median 2,849,000,000"
+          },
+          {
+            "name": "unit_scale",
+            "status": "pass",
+            "detail": "answer figure 2,515,000,000 matches fact (iso4217:USD)"
+          }
+        ]
+      },
+      "notes": []
+    }
+  },
+  "rag_raw": {
+    "question": "The provision for credit losses fell in Q2 2026 from a year earlier. What was the provision, and why did it decline?",
+    "answer_text": "In Q2 2026, the provision for credit losses was $4.2 billion. It declined from the prior year, where the provision was $4.7 billion. The decline was largely driven by improvements in home prices in the first quarter of 2026 [1][4].",
+    "citations": [
+      {
+        "number": 1,
+        "chunk_id": "JPMC_10-Q_Q2-2026_165",
+        "metadata": {
+          "section": "none",
+          "strategy": "fixed_size",
+          "period": "Q2-2026",
+          "form": "10-Q",
+          "company": "JPMC"
+        }
+      },
+      {
+        "number": 4,
+        "chunk_id": "JPMC_10-Q_Q2-2026_91",
+        "metadata": {
+          "company": "JPMC",
+          "form": "10-Q",
+          "period": "Q2-2026",
+          "section": "none",
+          "strategy": "fixed_size"
+        }
+      }
+    ],
+    "retrieved_chunks": [
+      {
+        "id": "JPMC_10-Q_Q2-2026_165",
+        "text": " and bankers, including higher revenue-related compensation. The provision for credit losses was $4.2 billion. Net charge-offs were $4.4 billion, up $111 million, largely driven by Card Services, reflecting loan growth. The net reduction in the allowance for credit losses of $145 million was predominantly driven by improvements in home prices in the first quarter of 2026. In the prior year, the provision was $4.7 billion, net charge-offs were $4.2 billion and the net addition to the allowance fo",
+        "metadata": {
+          "section": "none",
+          "strategy": "fixed_size",
+          "period": "Q2-2026",
+          "form": "10-Q",
+          "company": "JPMC"
+        },
+        "rank": 1,
+        "rrf_score": 0.03252247488101534,
+        "found_in": {
+          "0": 2,
+          "1": 1
+        },
+        "rerank_score": 4.305109977722168,
+        "rerank_rank": 1
+      },
+      {
+        "id": "JPMC_10-K_FY2025_573",
+        "text": "logy. The provision for credit losses was $11.5 billion. Net charge-offs were $8.2 billion, up $319 million, primarily driven by Card Services, reflecting loan growth. The net addition to the allowance for credit losses of $3.2 billion which was driven by $2.2 billion related to the Apple Card transaction, loan growth in Card Services and the impact of changes in the Firm's weighted-average macroeconomic outlook, partially offset by reduced borrower uncertainty. In the prior year, the provision ",
+        "metadata": {
+          "strategy": "structure_aware",
+          "form": "10-K",
+          "period": "FY2025",
+          "section": "Body - MD&A and financials",
+          "company": "JPMC"
+        },
+        "rank": 7,
+        "rrf_score": 0.028958333333333336,
+        "found_in": {
+          "0": 15,
+          "1": 4
+        },
+        "rerank_score": 2.6923561096191406,
+        "rerank_rank": 2
+      },
+      {
+        "id": "JPMC_10-Q_Q2-2026_201",
+        "text": "was $22.5 billion, up 16%, predominantly driven by higher compensation, including higher revenue-related compensation, as well as higher brokerage expense. The provision for credit losses was $838 million , driven by changes in credit quality of certain exposures and a net increase in the loan portfolio, partially offset by a reduction in the allowance with respect to certain accounts receivable and an update to loss assumptions on certain loans in Markets. The net addition to the allowance for ",
+        "metadata": {
+          "form": "10-Q",
+          "strategy": "fixed_size",
+          "section": "none",
+          "company": "JPMC",
+          "period": "Q2-2026"
+        },
+        "rank": 21,
+        "rrf_score": 0.0136986301369863,
+        "found_in": {
+          "0": 13
+        },
+        "rerank_score": 2.675034523010254,
+        "rerank_rank": 3
+      },
+      {
+        "id": "JPMC_10-Q_Q2-2026_91",
+        "text": ".0 billion. Net charge-offs were $4.7 billion and the net addition to the allowance for credit losses was $340 million. The provision for credit losses included: \u2022 $4.2 billion in consumer , consisting of net charge-offs of $4.4 billion, predominantly driven by Card Services, reflecting loan growth, and a net reduction in the allowance for credit losses of $128 million, predominantly driven by improvements in home prices in the first quarter of 2026, and \u2022 $808 million in wholesale , driven by c",
+        "metadata": {
+          "company": "JPMC",
+          "form": "10-Q",
+          "period": "Q2-2026",
+          "section": "none",
+          "strategy": "fixed_size"
+        },
+        "rank": 23,
+        "rrf_score": 0.013157894736842105,
+        "found_in": {
+          "0": 16
+        },
+        "rerank_score": 2.5805587768554688,
+        "rerank_rank": 4
+      },
+      {
+        "id": "JPMC_10-Q_Q2-2026_202",
+        "text": "in Markets. The net addition to the allowance for credit losses was $511 million and net charge-offs were $327 million . In the prior year, the provision was $1.4 billion, the net addition to the allowance for credit losses was $899 million and net charge-offs were $502 million. 29 Selected metrics (in millions, except employees) As of or for the three months ended June 30, As of or for the six months ended June 30, 2026 2025 Change 2026 2025 Change Selected balance sheet data (period-end) Total",
+        "metadata": {
+          "form": "10-Q",
+          "section": "none",
+          "company": "JPMC",
+          "strategy": "fixed_size",
+          "period": "Q2-2026"
+        },
+        "rank": 2,
+        "rrf_score": 0.03131881575727918,
+        "found_in": {
+          "0": 1,
+          "1": 7
+        },
+        "rerank_score": 2.189791202545166,
+        "rerank_rank": 5
+      }
+    ],
+    "confidence": 0.395,
+    "citation_verification": [
+      {
+        "number": 1,
+        "chunk_id": "JPMC_10-Q_Q2-2026_165",
+        "claim": "In Q2 2026, the provision for credit losses was $4.2 billion. It declined from the prior year, where the provision was $4.7 billion. The decline was largely driven by improvements in home prices in the first quarter of 2026",
+        "supported": false,
+        "reason": "The claim states Q2 2026, but the passage refers to Q1 2026."
+      },
+      {
+        "number": 4,
+        "chunk_id": "JPMC_10-Q_Q2-2026_91",
+        "claim": "In Q2 2026, the provision for credit losses was $4.2 billion. It declined from the prior year, where the provision was $4.7 billion. The decline was largely driven by improvements in home prices in the first quarter of 2026",
+        "supported": false,
+        "reason": "The passage states the provision for credit losses for Q1 2026, not Q2 2026."
+      }
+    ],
+    "declined": false
+  },
+  "error": null,
+  "usage": {
+    "calls": 10,
+    "cost_usd": 0.00139,
+    "by_label": {
+      "classify": 0.00013,
+      "execute:both": 0.00115,
+      "grade": 0.00011
+    }
+  }
+}

@@ -1,0 +1,189 @@
+{
+  "id": "r06",
+  "question": "What was net interest income for Q2 2026?",
+  "expected_route": "sql",
+  "route": "sql",
+  "decision": {
+    "route": "sql",
+    "confidence": 0.9,
+    "reasoning": "The question specifically asks for a reported figure, which is net interest income for a defined period (Q2 2026).",
+    "ambiguity_disclosure": null
+  },
+  "routing_correct": true,
+  "answer_type": "value",
+  "values": {
+    "Q2 2026 net interest income": true
+  },
+  "answer_correct": true,
+  "final_answer": "$25,511M for 2026-04-01 to 2026-06-30.\nMeasure: Interest Income (Expense), Operating (us-gaap:InterestIncomeExpenseNet).\nWhy this variant: Picked the no-dimension variant as it represents the consolidated net interest income for the entire entity.\nOther measures in the filing that could also answer this question:\n  - Revenues, Net of Interest Expense (us-gaap:RevenuesNetOfInterestExpense; Operating Segments [Member], Commercial And Investment Bank [Member]): $24,853M\n  - Interest and Fee Income, Loans and Leases (us-gaap:InterestAndFeeIncomeLoansAndLeases): $24,541M",
+  "conflicts": [],
+  "sql_raw": {
+    "answer": {
+      "question": "What was net interest income for Q2 2026?",
+      "status": "answered",
+      "text": "$25,511M for 2026-04-01 to 2026-06-30.\nMeasure: Interest Income (Expense), Operating (us-gaap:InterestIncomeExpenseNet).\nWhy this variant: Picked the no-dimension variant as it represents the consolidated net interest income for the entire entity.\nOther measures in the filing that could also answer this question:\n  - Revenues, Net of Interest Expense (us-gaap:RevenuesNetOfInterestExpense; Operating Segments [Member], Commercial And Investment Bank [Member]): $24,853M\n  - Interest and Fee Income, Loans and Leases (us-gaap:InterestAndFeeIncomeLoansAndLeases): $24,541M",
+      "sql": "SELECT concept, dimensions_json, period_start, period_end, value_numeric, unit, source_document FROM facts WHERE concept = 'us-gaap:InterestIncomeExpenseNet' AND dimensions_json = '{}' AND period_start = '2026-04-01' AND period_end = '2026-06-30'",
+      "plan": {
+        "intent": "read",
+        "not_available_reason": null,
+        "reasoning": "Selecting the consolidated net interest income for Q2 2026 from the concept 'us-gaap:InterestIncomeExpenseNet' with no dimensions, as it represents the overall net interest income.",
+        "sql": "SELECT concept, dimensions_json, period_start, period_end, value_numeric, unit, source_document FROM facts WHERE concept = 'us-gaap:InterestIncomeExpenseNet' AND dimensions_json = '{}' AND period_start = '2026-04-01' AND period_end = '2026-06-30'",
+        "target": {
+          "concept": "us-gaap:InterestIncomeExpenseNet",
+          "dimensions_json": "{}"
+        },
+        "target_period_start": "2026-04-01",
+        "target_period_end": "2026-06-30",
+        "ambiguity": "picked_headline",
+        "chosen_dimension_reason": "Picked the no-dimension variant as it represents the consolidated net interest income for the entire entity.",
+        "alternatives": [
+          {
+            "concept": "us-gaap:InterestIncomeExpenseNet",
+            "dimensions_json": "{\"srt:ConsolidationItemsAxis\": \"us-gaap:CorporateNonSegmentMember\"}"
+          },
+          {
+            "concept": "us-gaap:InterestIncomeExpenseNet",
+            "dimensions_json": "{\"srt:ConsolidationItemsAxis\": \"us-gaap:MaterialReconcilingItemsMember\"}"
+          },
+          {
+            "concept": "us-gaap:InterestIncomeExpenseNet",
+            "dimensions_json": "{\"srt:ConsolidationItemsAxis\": \"us-gaap:OperatingSegmentsMember\", \"us-gaap:StatementBusinessSegmentsAxis\": \"jpm:AssetandWealthManagementSegmentMember\"}"
+          },
+          {
+            "concept": "us-gaap:InterestIncomeExpenseNet",
+            "dimensions_json": "{\"srt:ConsolidationItemsAxis\": \"us-gaap:OperatingSegmentsMember\", \"us-gaap:StatementBusinessSegmentsAxis\": \"jpm:CommercialAndInvestmentBankMember\"}"
+          },
+          {
+            "concept": "us-gaap:InterestIncomeExpenseNet",
+            "dimensions_json": "{\"srt:ConsolidationItemsAxis\": \"us-gaap:OperatingSegmentsMember\", \"us-gaap:StatementBusinessSegmentsAxis\": \"jpm:ConsumerCommunityBankingMember\"}"
+          }
+        ],
+        "clarification_question": null
+      },
+      "measure": {
+        "concept": "us-gaap:InterestIncomeExpenseNet",
+        "dimensions_json": "{}",
+        "period_start": "2026-04-01",
+        "period_end": "2026-06-30",
+        "value_numeric": 25511000000.0,
+        "unit": "iso4217:USD",
+        "label": "Interest Income (Expense), Operating",
+        "dimension_labels": {}
+      },
+      "alternatives": [
+        {
+          "concept": "us-gaap:RevenuesNetOfInterestExpense",
+          "dimensions_json": "{\"srt:ConsolidationItemsAxis\": \"us-gaap:OperatingSegmentsMember\", \"us-gaap:StatementBusinessSegmentsAxis\": \"jpm:CommercialAndInvestmentBankMember\"}",
+          "period_start": "2026-04-01",
+          "period_end": "2026-06-30",
+          "value_numeric": 24853000000.0,
+          "unit": "iso4217:USD",
+          "label": "Revenues, Net of Interest Expense",
+          "dimension_labels": {
+            "Consolidation Items [Axis]": "Operating Segments [Member]",
+            "Segments [Axis]": "Commercial And Investment Bank [Member]"
+          }
+        },
+        {
+          "concept": "us-gaap:InterestAndFeeIncomeLoansAndLeases",
+          "dimensions_json": "{}",
+          "period_start": "2026-04-01",
+          "period_end": "2026-06-30",
+          "value_numeric": 24541000000.0,
+          "unit": "iso4217:USD",
+          "label": "Interest and Fee Income, Loans and Leases",
+          "dimension_labels": {}
+        }
+      ],
+      "ambiguity": "picked_headline",
+      "rows": [
+        [
+          "us-gaap:InterestIncomeExpenseNet",
+          "{}",
+          "2026-04-01",
+          "2026-06-30",
+          25511000000.0,
+          "iso4217:USD",
+          "JPMC_10-Q_Q2-2026"
+        ]
+      ],
+      "columns": [
+        "concept",
+        "dimensions_json",
+        "period_start",
+        "period_end",
+        "value_numeric",
+        "unit",
+        "source_document"
+      ],
+      "block_reason": null,
+      "reason": null,
+      "system_notes": [
+        "dropped breakdown listed as alternative: us-gaap:InterestIncomeExpenseNet {\"srt:ConsolidationItemsAxis\": \"us-gaap:CorporateNonSegmentMember\"}",
+        "dropped breakdown listed as alternative: us-gaap:InterestIncomeExpenseNet {\"srt:ConsolidationItemsAxis\": \"us-gaap:MaterialReconcilingItemsMember\"}",
+        "dropped breakdown listed as alternative: us-gaap:InterestIncomeExpenseNet {\"srt:ConsolidationItemsAxis\": \"us-gaap:OperatingSegmentsMember\", \"us-gaap:StatementBusinessSegmentsAxis\": \"jpm:AssetandWealthManagementSegmentMember\"}",
+        "dropped breakdown listed as alternative: us-gaap:InterestIncomeExpenseNet {\"srt:ConsolidationItemsAxis\": \"us-gaap:OperatingSegmentsMember\", \"us-gaap:StatementBusinessSegmentsAxis\": \"jpm:CommercialAndInvestmentBankMember\"}",
+        "dropped breakdown listed as alternative: us-gaap:InterestIncomeExpenseNet {\"srt:ConsolidationItemsAxis\": \"us-gaap:OperatingSegmentsMember\", \"us-gaap:StatementBusinessSegmentsAxis\": \"jpm:ConsumerCommunityBankingMember\"}",
+        "system added undisclosed near-value alternative us-gaap:RevenuesNetOfInterestExpense {\"srt:ConsolidationItemsAxis\": \"us-gaap:OperatingSegmentsMember\", \"us-gaap:StatementBusinessSegmentsAxis\": \"jpm:CommercialAndInvestmentBankMember\"}",
+        "system added undisclosed near-value alternative us-gaap:InterestAndFeeIncomeLoansAndLeases {}"
+      ]
+    },
+    "confidence": {
+      "score": 1.0,
+      "flagged": false,
+      "reasons": [],
+      "components": {
+        "back_translation": 1.0,
+        "magnitude": 1.0,
+        "unit_scale": 1.0
+      },
+      "back_translation": {
+        "original_question": "What was net interest income for Q2 2026?",
+        "back_translated_question": "What is the net interest income for the firm-wide consolidated total for the three months ended June 30, 2026?",
+        "judgment": {
+          "original_metric": "net interest income",
+          "original_period": "Q2 2026",
+          "original_scope": "firm-wide consolidated total",
+          "back_translated_metric": "net interest income",
+          "back_translated_period": "three months ended June 30, 2026",
+          "back_translated_scope": "firm-wide consolidated total",
+          "metric": "match",
+          "period": "match",
+          "scope": "match",
+          "explanation": "All aspects match as both questions refer to net interest income for the same period and scope."
+        },
+        "period_source": "code"
+      },
+      "sanity": {
+        "checks": [
+          {
+            "name": "non_null",
+            "status": "pass",
+            "detail": "1 row(s), value present"
+          },
+          {
+            "name": "magnitude",
+            "status": "pass",
+            "detail": "1 comparable quarter value(s), median 23,209,000,000"
+          },
+          {
+            "name": "unit_scale",
+            "status": "pass",
+            "detail": "answer figure 25,511,000,000 matches fact (iso4217:USD)"
+          }
+        ]
+      },
+      "notes": []
+    }
+  },
+  "rag_raw": null,
+  "error": null,
+  "usage": {
+    "calls": 5,
+    "cost_usd": 0.00163,
+    "by_label": {
+      "classify": 0.00012,
+      "execute:sql": 0.00151
+    }
+  }
+}

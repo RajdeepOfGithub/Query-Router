@@ -1,0 +1,336 @@
+{
+  "id": "r11",
+  "question": "Why did share repurchases increase in 2025 compared with 2024, and by how much?",
+  "expected_route": "both",
+  "route": "both",
+  "decision": {
+    "route": "both",
+    "confidence": 0.9,
+    "reasoning": "The question asks for both the amount of increase in share repurchases and the reasons behind that increase, which requires information from both reported figures and contextual explanations.",
+    "ambiguity_disclosure": null
+  },
+  "routing_correct": true,
+  "answer_type": "value+claims",
+  "values": {
+    "FY2025 aggregate repurchase cost": true,
+    "FY2024 aggregate repurchase cost": true
+  },
+  "claims_score": 1.0,
+  "answer_correct": true,
+  "final_answer": "The figures, from structured XBRL data [SQL]:\n- us-gaap:TreasuryStockSharesAcquired, 2024-01-01 to 2024-12-31: $92M\n- us-gaap:TreasuryStockSharesAcquired, 2025-01-01 to 2025-12-31: $114M\n\nExplanation, from the filings and earnings call:\nShare repurchases increased in 2025 compared with 2024 due to the authorization of a new $50 billion common share repurchase program effective July 1, 2025, which likely contributed to the increase in repurchases. The total number of shares of common stock repurchased in 2025 was 114.4 million, compared to 91.7 million in 2024, resulting in an increase of 22.7 million shares repurchased [RAG-1][RAG-5]. The aggregate purchase price of common stock repurchases also increased from $18,841 million in 2024 to $31,640 million in 2025, an increase of $12,799 million [RAG-1].\n\nCaution: financial-rag's own citation check did not confirm 1 of 3 cited claims in the explanation.\n\nFigure check against structured data (explanation drawn from FY2025 filings):\n- Unconfirmed: the explanation states $50 billion (2025-01-01 to 2025-12-31), which matches no structured figure for that period (possibly a different measure). Where it describes the same item, the [SQL] figure takes precedence.\n- Unconfirmed: the explanation states $18,841 million (2024-01-01 to 2024-12-31), which matches no structured figure for that period (possibly a different measure). Where it describes the same item, the [SQL] figure takes precedence.\n- Unconfirmed: the explanation states $31,640 million (2025-01-01 to 2025-12-31), which matches no structured figure for that period (possibly a different measure). Where it describes the same item, the [SQL] figure takes precedence.\n- Unconfirmed: the explanation states $12,799 million (2025-01-01 to 2025-12-31), which matches no structured figure for that period (possibly a different measure). Where it describes the same item, the [SQL] figure takes precedence.\n\nSources:\n[SQL] Text-to-SQL over XBRL facts: status=answered, confidence=0.0 (FLAGGED: back-translation mismatch on metric: SQL answers 'What is the total number of shares of common stock repurchased (in shares) for the years ended December 31, 2024 and December 31, 2025?' (The original question asks for a comparison of share repurchases between 2025 and 2024, while the back-translation specifies total shares repurchased for both years without a comparative aspect.); sanity non_null: result value is null); query: SELECT concept, dimensions_json, period_start, period_end, value_numeric, unit, source_document FROM facts WHERE concept = 'us-gaap:TreasuryStockSharesAcquired' AND dimensions_json = '{\"us-gaap:StatementEquityComponentsAxis\": \"us-gaap:CommonStockMember\"}' AND period_start = '2025-01-01' AND period_end = '2025-12-31' UNION SELECT concept, dimensions_json, period_start, period_end, value_numeric, unit, source_document FROM facts WHERE concept = 'us-gaap:TreasuryStockSharesAcquired' AND dimensions_json = '{\"us-gaap:StatementEquityComponentsAxis\": \"us-gaap:CommonStockMember\"}' AND period_start = '2024-01-01' AND period_end = '2024-12-31'\n[RAG-1] financial-rag passage JPMC_10-K_FY2025_2240 (10-K, FY2025, Body - MD&A and financials); citation verified\n[RAG-5] financial-rag passage JPMC_10-K_FY2025_805 (10-K, FY2025, Body - MD&A and financials); citation NOT supported by passage",
+  "conflicts": [
+    {
+      "rag_figure": "$50 billion",
+      "rag_value": 50000000000.0,
+      "rag_period": "2025-01-01 to 2025-12-31",
+      "period_basis": "stated in answer text",
+      "rag_filing_periods": [
+        "FY2025"
+      ],
+      "kind": "unmatched_same_period",
+      "resolution": "not confirmed by structured data; SQL figures take precedence where they describe the same item"
+    },
+    {
+      "rag_figure": "$18,841 million",
+      "rag_value": 18841000000.0,
+      "rag_period": "2024-01-01 to 2024-12-31",
+      "period_basis": "stated in answer text",
+      "rag_filing_periods": [
+        "FY2025"
+      ],
+      "kind": "unmatched_same_period",
+      "resolution": "not confirmed by structured data; SQL figures take precedence where they describe the same item"
+    },
+    {
+      "rag_figure": "$31,640 million",
+      "rag_value": 31640000000.0,
+      "rag_period": "2025-01-01 to 2025-12-31",
+      "period_basis": "stated in answer text",
+      "rag_filing_periods": [
+        "FY2025"
+      ],
+      "kind": "unmatched_same_period",
+      "resolution": "not confirmed by structured data; SQL figures take precedence where they describe the same item"
+    },
+    {
+      "rag_figure": "$12,799 million",
+      "rag_value": 12799000000.0,
+      "rag_period": "2025-01-01 to 2025-12-31",
+      "period_basis": "stated in answer text",
+      "rag_filing_periods": [
+        "FY2025"
+      ],
+      "kind": "unmatched_same_period",
+      "resolution": "not confirmed by structured data; SQL figures take precedence where they describe the same item"
+    }
+  ],
+  "sql_raw": {
+    "answer": {
+      "question": "Why did share repurchases increase in 2025 compared with 2024, and by how much?",
+      "status": "answered",
+      "text": "2 rows:\n('us-gaap:TreasuryStockSharesAcquired', '{\"us-gaap:StatementEquityComponentsAxis\": \"us-gaap:CommonStockMember\"}', '2024-01-01', '2024-12-31', 91700000.0, 'xbrli:shares', 'JPMC_10-K_FY2025')\n('us-gaap:TreasuryStockSharesAcquired', '{\"us-gaap:StatementEquityComponentsAxis\": \"us-gaap:CommonStockMember\"}', '2025-01-01', '2025-12-31', 114400000.0, 'xbrli:shares', 'JPMC_10-K_FY2025')",
+      "sql": "SELECT concept, dimensions_json, period_start, period_end, value_numeric, unit, source_document FROM facts WHERE concept = 'us-gaap:TreasuryStockSharesAcquired' AND dimensions_json = '{\"us-gaap:StatementEquityComponentsAxis\": \"us-gaap:CommonStockMember\"}' AND period_start = '2025-01-01' AND period_end = '2025-12-31' UNION SELECT concept, dimensions_json, period_start, period_end, value_numeric, unit, source_document FROM facts WHERE concept = 'us-gaap:TreasuryStockSharesAcquired' AND dimensions_json = '{\"us-gaap:StatementEquityComponentsAxis\": \"us-gaap:CommonStockMember\"}' AND period_start = '2024-01-01' AND period_end = '2024-12-31'",
+      "plan": {
+        "intent": "read",
+        "not_available_reason": null,
+        "reasoning": "To find the increase in share repurchases from 2024 to 2025, I will look at the concept 'Treasury Stock, Shares, Acquired' for the years 2024 and 2025. I chose the variant with 'CommonStockMember' as it represents the total number of shares of common stock repurchased.",
+        "sql": "SELECT concept, dimensions_json, period_start, period_end, value_numeric, unit, source_document FROM facts WHERE concept = 'us-gaap:TreasuryStockSharesAcquired' AND dimensions_json = '{\"us-gaap:StatementEquityComponentsAxis\": \"us-gaap:CommonStockMember\"}' AND period_start = '2025-01-01' AND period_end = '2025-12-31' UNION SELECT concept, dimensions_json, period_start, period_end, value_numeric, unit, source_document FROM facts WHERE concept = 'us-gaap:TreasuryStockSharesAcquired' AND dimensions_json = '{\"us-gaap:StatementEquityComponentsAxis\": \"us-gaap:CommonStockMember\"}' AND period_start = '2024-01-01' AND period_end = '2024-12-31'",
+        "target": {
+          "concept": "us-gaap:TreasuryStockSharesAcquired",
+          "dimensions_json": "{\"us-gaap:StatementEquityComponentsAxis\": \"us-gaap:CommonStockMember\"}"
+        },
+        "target_period_start": "2025-01-01",
+        "target_period_end": "2025-12-31",
+        "ambiguity": "none",
+        "chosen_dimension_reason": "I chose the variant with 'CommonStockMember' as it represents the total number of shares of common stock repurchased.",
+        "alternatives": [],
+        "clarification_question": null
+      },
+      "measure": null,
+      "alternatives": [],
+      "ambiguity": "none",
+      "rows": [
+        [
+          "us-gaap:TreasuryStockSharesAcquired",
+          "{\"us-gaap:StatementEquityComponentsAxis\": \"us-gaap:CommonStockMember\"}",
+          "2024-01-01",
+          "2024-12-31",
+          91700000.0,
+          "xbrli:shares",
+          "JPMC_10-K_FY2025"
+        ],
+        [
+          "us-gaap:TreasuryStockSharesAcquired",
+          "{\"us-gaap:StatementEquityComponentsAxis\": \"us-gaap:CommonStockMember\"}",
+          "2025-01-01",
+          "2025-12-31",
+          114400000.0,
+          "xbrli:shares",
+          "JPMC_10-K_FY2025"
+        ]
+      ],
+      "columns": [
+        "concept",
+        "dimensions_json",
+        "period_start",
+        "period_end",
+        "value_numeric",
+        "unit",
+        "source_document"
+      ],
+      "block_reason": null,
+      "reason": null,
+      "system_notes": []
+    },
+    "confidence": {
+      "score": 0.0,
+      "flagged": true,
+      "reasons": [
+        "back-translation mismatch on metric: SQL answers 'What is the total number of shares of common stock repurchased (in shares) for the years ended December 31, 2024 and December 31, 2025?' (The original question asks for a comparison of share repurchases between 2025 and 2024, while the back-translation specifies total shares repurchased for both years without a comparative aspect.)",
+        "sanity non_null: result value is null"
+      ],
+      "components": {
+        "back_translation": 0.0,
+        "magnitude": 0.5,
+        "unit_scale": 0.5
+      },
+      "back_translation": {
+        "original_question": "Why did share repurchases increase in 2025 compared with 2024, and by how much?",
+        "back_translated_question": "What is the total number of shares of common stock repurchased (in shares) for the years ended December 31, 2024 and December 31, 2025?",
+        "judgment": {
+          "original_metric": "share repurchases",
+          "original_period": "2025 compared with 2024",
+          "original_scope": "not_specified",
+          "back_translated_metric": "total number of shares of common stock repurchased",
+          "back_translated_period": "years ended December 31, 2024 and December 31, 2025",
+          "back_translated_scope": "not_specified",
+          "metric": "mismatch",
+          "period": "match",
+          "scope": "not_specified",
+          "explanation": "The original question asks for a comparison of share repurchases between 2025 and 2024, while the back-translation specifies total shares repurchased for both years without a comparative aspect."
+        },
+        "period_source": "code"
+      },
+      "sanity": {
+        "checks": [
+          {
+            "name": "non_null",
+            "status": "fail",
+            "detail": "result value is null"
+          },
+          {
+            "name": "magnitude",
+            "status": "not_applicable",
+            "detail": "no single-value result"
+          },
+          {
+            "name": "unit_scale",
+            "status": "not_applicable",
+            "detail": "no single-value result"
+          }
+        ]
+      },
+      "notes": []
+    }
+  },
+  "rag_raw": {
+    "question": "Why did share repurchases increase in 2025 compared with 2024, and by how much?",
+    "answer_text": "Share repurchases increased in 2025 compared with 2024 due to the authorization of a new $50 billion common share repurchase program effective July 1, 2025, which likely contributed to the increase in repurchases. The total number of shares of common stock repurchased in 2025 was 114.4 million, compared to 91.7 million in 2024, resulting in an increase of 22.7 million shares repurchased [1][5]. The aggregate purchase price of common stock repurchases also increased from $18,841 million in 2024 to $31,640 million in 2025, an increase of $12,799 million [1].",
+    "citations": [
+      {
+        "number": 1,
+        "chunk_id": "JPMC_10-K_FY2025_2240",
+        "metadata": {
+          "strategy": "structure_aware",
+          "section": "Body - MD&A and financials",
+          "company": "JPMC",
+          "form": "10-K",
+          "period": "FY2025"
+        }
+      },
+      {
+        "number": 5,
+        "chunk_id": "JPMC_10-K_FY2025_805",
+        "metadata": {
+          "company": "JPMC",
+          "form": "10-K",
+          "strategy": "structure_aware",
+          "section": "Body - MD&A and financials",
+          "period": "FY2025"
+        }
+      }
+    ],
+    "retrieved_chunks": [
+      {
+        "id": "JPMC_10-K_FY2025_2240",
+        "text": "on share repurchase program that was announced on June 28, 2024. The following table sets forth the Firm\u2019s repurchases of common stock for the years ended December\u00a031, 2025, 2024 and 2023. Year ended December 31, (in millions) 2025 2024 2023 Total number of shares of common stock repurchased 114.4 91.7 69.5 Aggregate purchase price of common stock repurchases (a) $ 31,640 $ 18,841 $ 9,898 (a) Excludes excise tax and commissions. The Board of Directors\u2019 authorization to repurchase common shares i",
+        "metadata": {
+          "strategy": "structure_aware",
+          "section": "Body - MD&A and financials",
+          "company": "JPMC",
+          "form": "10-K",
+          "period": "FY2025"
+        },
+        "rank": 1,
+        "rrf_score": 0.03278688524590164,
+        "found_in": {
+          "0": 1,
+          "1": 1
+        },
+        "rerank_score": 4.856258392333984,
+        "rerank_rank": 1
+      },
+      {
+        "id": "JPMC_10-K_FY2025_347",
+        "text": "gram that was announced on June 28, 2024. Shares repurchased pursuant to the common share repurchase programs during 2025 were as follows: Year ended December 31, 2025 Total number of shares of common stock repurchased Average price paid per share of common stock (a) Aggregate purchase price of common stock repurchases (in millions) (a) Dollar value of remaining authorized repurchase (in millions) (a) First quarter 29,953,620 $ 252.50 $ 7,563 $ 11,763 Second quarter 29,800,960 251.67 7,500 4,263",
+        "metadata": {
+          "company": "JPMC",
+          "section": "Part II - pointer block",
+          "form": "10-K",
+          "period": "FY2025",
+          "strategy": "structure_aware"
+        },
+        "rank": 3,
+        "rrf_score": 0.031054405392392875,
+        "found_in": {
+          "0": 2,
+          "1": 7
+        },
+        "rerank_score": 4.815901756286621,
+        "rerank_rank": 2
+      },
+      {
+        "id": "JPMC_10-Q_Q2-2026_316",
+        "text": "at its Board of Directors intends to increase the quarterly common stock dividend to $1.65 per share for the third quarter of 2026. The Firm\u2019s dividends are subject to approval by the Board of Directors on a quarterly basis. Common stock repurchases On June 24, 2026, the Firm announced that its Board of Directors had authorized a new $50\u00a0billion common share repurchase program, effective July 1, 2026. Through June 30, 2026, the Firm was authorized to purchase up to $50\u00a0billion of common shares u",
+        "metadata": {
+          "section": "none",
+          "company": "JPMC",
+          "strategy": "fixed_size",
+          "form": "10-Q",
+          "period": "Q2-2026"
+        },
+        "rank": 8,
+        "rrf_score": 0.0293236301369863,
+        "found_in": {
+          "0": 13,
+          "1": 4
+        },
+        "rerank_score": 4.141658782958984,
+        "rerank_rank": 3
+      },
+      {
+        "id": "JPMC_10-Q_Q2-2026_317",
+        "text": "d to purchase up to $50\u00a0billion of common shares under its previously-approved common share repurchase program that was announced on July 1, 2025. The following table sets forth the Firm\u2019s repurchases of common stock for the three and six months ended June 30, 2026 and 2025. Three months ended June 30, Six months ended June 30, (in millions) 2026 2025 2026 2025 Total number of shares of common stock repurchased 21.7 29.8 49.3 59.8 Aggregate purchase price of common stock repurchases (a) $ 6,703 ",
+        "metadata": {
+          "form": "10-Q",
+          "company": "JPMC",
+          "strategy": "fixed_size",
+          "period": "Q2-2026",
+          "section": "none"
+        },
+        "rank": 6,
+        "rrf_score": 0.029513888888888888,
+        "found_in": {
+          "0": 4,
+          "1": 12
+        },
+        "rerank_score": 3.788518190383911,
+        "rerank_rank": 4
+      },
+      {
+        "id": "JPMC_10-K_FY2025_805",
+        "text": "g table shows the common dividend payout ratio based on net income applicable to common equity. Year ended December 31, 2025 2024 2023 Common dividend payout ratio 29 % 24 % 25 % Common stock repurchases On July 1, 2025, the Firm announced that its Board of Directors had authorized a new $50\u00a0billion common share repurchase program, effective July 1, 2025. Through June 30, 2025, the Firm was authorized to purchase up to $30\u00a0billion of common shares under its previously-approved common share repur",
+        "metadata": {
+          "company": "JPMC",
+          "form": "10-K",
+          "strategy": "structure_aware",
+          "section": "Body - MD&A and financials",
+          "period": "FY2025"
+        },
+        "rank": 4,
+        "rrf_score": 0.030309988518943745,
+        "found_in": {
+          "0": 7,
+          "1": 5
+        },
+        "rerank_score": 3.768399238586426,
+        "rerank_rank": 5
+      }
+    ],
+    "confidence": 0.797,
+    "citation_verification": [
+      {
+        "number": 1,
+        "chunk_id": "JPMC_10-K_FY2025_2240",
+        "claim": "Share repurchases increased in 2025 compared with 2024 due to the authorization of a new $50 billion common share repurchase program effective July 1, 2025, which likely contributed to the increase in repurchases. The total number of shares of common stock repurchased in 2025 was 114.4 million, compared to 91.7 million in 2024, resulting in an increase of 22.7 million shares repurchased",
+        "supported": true,
+        "reason": "The passage provides the figures for share repurchases in 2025 and 2024."
+      },
+      {
+        "number": 5,
+        "chunk_id": "JPMC_10-K_FY2025_805",
+        "claim": "Share repurchases increased in 2025 compared with 2024 due to the authorization of a new $50 billion common share repurchase program effective July 1, 2025, which likely contributed to the increase in repurchases. The total number of shares of common stock repurchased in 2025 was 114.4 million, compared to 91.7 million in 2024, resulting in an increase of 22.7 million shares repurchased",
+        "supported": false,
+        "reason": "The passage does not provide figures for shares repurchased in 2025 or 2024."
+      },
+      {
+        "number": 1,
+        "chunk_id": "JPMC_10-K_FY2025_2240",
+        "claim": ". The aggregate purchase price of common stock repurchases also increased from $18,841 million in 2024 to $31,640 million in 2025, an increase of $12,799 million",
+        "supported": true,
+        "reason": "The figures and increase are directly stated in the passage."
+      }
+    ],
+    "declined": false
+  },
+  "error": null,
+  "usage": {
+    "calls": 12,
+    "cost_usd": 0.00307,
+    "by_label": {
+      "classify": 0.00013,
+      "execute:both": 0.00279,
+      "grade": 0.00016
+    }
+  }
+}

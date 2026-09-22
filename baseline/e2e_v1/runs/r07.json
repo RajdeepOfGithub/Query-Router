@@ -1,0 +1,171 @@
+{
+  "id": "r07",
+  "question": "Why did investment banking fees increase in the second quarter of 2026?",
+  "expected_route": "rag",
+  "route": "rag",
+  "decision": {
+    "route": "rag",
+    "confidence": 0.9,
+    "reasoning": "The question seeks an explanation for the increase in investment banking fees, which requires context and commentary rather than just reported figures.",
+    "ambiguity_disclosure": null
+  },
+  "routing_correct": true,
+  "answer_type": "claims",
+  "claims_score": 0.5,
+  "answer_correct": false,
+  "final_answer": "Investment banking fees increased in the second quarter of 2026 due to higher advisory fees largely driven by higher fees from deals in the Diversified Industries, Financial Institutions, and Technology sectors, as well as higher equity underwriting fees driven by higher revenue across all products, and higher debt underwriting fees driven by higher investment-grade loans and bonds [3][4].",
+  "conflicts": [],
+  "sql_raw": null,
+  "rag_raw": {
+    "question": "Why did investment banking fees increase in the second quarter of 2026?",
+    "answer_text": "Investment banking fees increased in the second quarter of 2026 due to higher advisory fees largely driven by higher fees from deals in the Diversified Industries, Financial Institutions, and Technology sectors, as well as higher equity underwriting fees driven by higher revenue across all products, and higher debt underwriting fees driven by higher investment-grade loans and bonds [3][4].",
+    "citations": [
+      {
+        "number": 3,
+        "chunk_id": "JPMC_10-Q_Q2-2026_79",
+        "metadata": {
+          "form": "10-Q",
+          "period": "Q2-2026",
+          "strategy": "fixed_size",
+          "section": "none",
+          "company": "JPMC"
+        }
+      },
+      {
+        "number": 4,
+        "chunk_id": "JPMC_10-Q_Q2-2026_197",
+        "metadata": {
+          "strategy": "fixed_size",
+          "section": "none",
+          "form": "10-Q",
+          "company": "JPMC",
+          "period": "Q2-2026"
+        }
+      }
+    ],
+    "retrieved_chunks": [
+      {
+        "id": "JPMC_10-K_FY2025_450",
+        "text": "gement fees in AWM and CCB, higher auto operating lease income, lower net investment securities losses in Treasury and CIO, higher Payments fees, higher investment banking fees, and a $588 million First Republic-related gain recorded in the first quarter of 2025. These increases were predominantly offset by the absence of the $7.9 billion net gain related to Visa shares recorded in the second quarter of 2024, as well as lower card income in the current year. \u2022 Noninterest expense was $95.6 billi",
+        "metadata": {
+          "form": "10-K",
+          "company": "JPMC",
+          "section": "Body - MD&A and financials",
+          "period": "FY2025",
+          "strategy": "structure_aware"
+        },
+        "rank": 4,
+        "rrf_score": 0.02889344262295082,
+        "found_in": {
+          "0": 20,
+          "1": 1
+        },
+        "rerank_score": 5.914067268371582,
+        "rerank_rank": 1
+      },
+      {
+        "id": "JPMC_10-K_FY2025_474",
+        "text": "ed the estimated bargain purchase gain of $2.8 billion for the year ended December\u00a031, 2023 associated with the First Republic acquisition. Refer to Notes 6 and 34 for additional information. 2025 compared with 2024 Investment banking fees increased, reflecting in CIB : \u2022 higher debt underwriting fees predominantly driven by non-investment grade loans and investment grade bonds, \u2022 higher advisory fees benefiting from higher fees from deals in the Financial Institutions and Technology sectors, pa",
+        "metadata": {
+          "form": "10-K",
+          "period": "FY2025",
+          "section": "Body - MD&A and financials",
+          "strategy": "structure_aware",
+          "company": "JPMC"
+        },
+        "rank": 31,
+        "rrf_score": 0.0125,
+        "found_in": {
+          "1": 20
+        },
+        "rerank_score": 3.7072739601135254,
+        "rerank_rank": 2
+      },
+      {
+        "id": "JPMC_10-Q_Q2-2026_79",
+        "text": "net yield excluding Markets. Year-to-date results Investment banking fees increased, reflecting in CIB : \u2022 higher advisory fees largely driven by higher fees from deals in the Diversified Industries, Financial Institutions, and Technology sectors, partially offset by lower fees from deals in the Consumer & Retail sector, \u2022 higher equity underwriting fees driven by higher revenue across all products, and \u2022 higher debt underwriting fees driven by higher investment-grade loans and bonds and non-inv",
+        "metadata": {
+          "form": "10-Q",
+          "period": "Q2-2026",
+          "strategy": "fixed_size",
+          "section": "none",
+          "company": "JPMC"
+        },
+        "rank": 7,
+        "rrf_score": 0.027313266443701224,
+        "found_in": {
+          "0": 9,
+          "1": 18
+        },
+        "rerank_score": 3.592400312423706,
+        "rerank_rank": 3
+      },
+      {
+        "id": "JPMC_10-Q_Q2-2026_197",
+        "text": " predominantly driven by higher investment banking fees and net gains on equity investments. Investment banking fees were up 29%, driven by higher fees across products. The Firm ranked #1 for global investment banking fees for the six months ended June 30, 2026, according to Dealogic. \u2013 Equity underwriting fees were $1.3 billion, up 65%, driven by higher revenue across all products. \u2013 Advisory fees were $2.3 billion, up 48%, largely driven by higher fees from deals in the Diversified Industries,",
+        "metadata": {
+          "strategy": "fixed_size",
+          "section": "none",
+          "form": "10-Q",
+          "company": "JPMC",
+          "period": "Q2-2026"
+        },
+        "rank": 1,
+        "rrf_score": 0.032018442622950824,
+        "found_in": {
+          "0": 1,
+          "1": 4
+        },
+        "rerank_score": 3.4876294136047363,
+        "rerank_rank": 4
+      },
+      {
+        "id": "JPMC_10-K_FY2025_616",
+        "text": "an that was charged off in the fourth quarter of 2024. 72 JPMorgan Chase & Co./2025 Form 10-K Investment banking fees Year ended December 31, (in millions) 2025 2024 2023 Advisory $ 3,497 $ 3,290 $ 2,814 Equity underwriting 1,732 1,692 1,151 Debt underwriting (a) 4,506 4,134 2,666 Total investment banking fees $ 9,735 $ 9,116 $ 6,631 (a) Represents long-term debt and loan syndications. League table results \u2013 wallet share 2025 2024 2023 Year ended December 31, Rank Share Rank Share Rank Share Bas",
+        "metadata": {
+          "form": "10-K",
+          "company": "JPMC",
+          "section": "Body - MD&A and financials",
+          "period": "FY2025",
+          "strategy": "structure_aware"
+        },
+        "rank": 5,
+        "rrf_score": 0.028665028665028666,
+        "found_in": {
+          "0": 6,
+          "1": 14
+        },
+        "rerank_score": 3.139622211456299,
+        "rerank_rank": 5
+      }
+    ],
+    "confidence": 0.389,
+    "citation_verification": [
+      {
+        "number": 3,
+        "chunk_id": "JPMC_10-Q_Q2-2026_79",
+        "claim": "Investment banking fees increased in the second quarter of 2026 due to higher advisory fees largely driven by higher fees from deals in the Diversified Industries, Financial Institutions, and Technology sectors, as well as higher equity underwriting fees driven by higher revenue across all products, and higher debt underwriting fees driven by higher investment-grade loans and bonds",
+        "supported": false,
+        "reason": "The passage does not specify the second quarter of 2026."
+      },
+      {
+        "number": 4,
+        "chunk_id": "JPMC_10-Q_Q2-2026_197",
+        "claim": "Investment banking fees increased in the second quarter of 2026 due to higher advisory fees largely driven by higher fees from deals in the Diversified Industries, Financial Institutions, and Technology sectors, as well as higher equity underwriting fees driven by higher revenue across all products, and higher debt underwriting fees driven by higher investment-grade loans and bonds",
+        "supported": false,
+        "reason": "The passage does not mention debt underwriting fees or the Financial Institutions and Technology sectors."
+      }
+    ],
+    "declined": false
+  },
+  "error": null,
+  "usage": {
+    "calls": 6,
+    "cost_usd": 0.00041,
+    "by_label": {
+      "classify": 0.00012,
+      "execute:rag": 0.00024,
+      "grade": 4e-05
+    }
+  }
+}

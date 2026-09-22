@@ -1,0 +1,134 @@
+{
+  "id": "r17",
+  "question": "Was credit quality a concern for JPMorgan in Q2 2026?",
+  "expected_route": "ambiguous",
+  "route": "rag",
+  "decision": {
+    "route": "rag",
+    "confidence": 0.9,
+    "reasoning": "The question asks for an explanation regarding credit quality as a concern, which requires context and commentary rather than just reported figures.",
+    "ambiguity_disclosure": null
+  },
+  "routing_correct": false,
+  "answer_type": "ambiguous_rubric",
+  "rubric": {
+    "disclosure_up_front": false,
+    "structured_figure_for_period": false,
+    "explanation_not_declined": false
+  },
+  "answer_correct": false,
+  "final_answer": "The context does not provide specific information regarding whether credit quality was a concern for JPMorgan in Q2 2026. It mentions that delinquency rates are the primary credit quality indicator for credit card loans and consumer loans, but it does not explicitly state if there were concerns related to credit quality during that period. Therefore, the answer is that the context is insufficient to determine if credit quality was a concern for JPMorgan in Q2 2026.",
+  "conflicts": [],
+  "sql_raw": null,
+  "rag_raw": {
+    "question": "Was credit quality a concern for JPMorgan in Q2 2026?",
+    "answer_text": "The context does not provide specific information regarding whether credit quality was a concern for JPMorgan in Q2 2026. It mentions that delinquency rates are the primary credit quality indicator for credit card loans and consumer loans, but it does not explicitly state if there were concerns related to credit quality during that period. Therefore, the answer is that the context is insufficient to determine if credit quality was a concern for JPMorgan in Q2 2026.",
+    "citations": [],
+    "retrieved_chunks": [
+      {
+        "id": "JPMC_10-K_FY2025_1977",
+        "text": "ular attention paid to industries with an actual or potential credit concern. Refer to Note 4 for further detail on industry concentrations. 250 JPMorgan Chase & Co./2025 Form 10-K Internal risk rating is the primary credit quality indicator for retained wholesale loans. The following tables provide information on internal risk rating and gross charge-offs. December 31, (in millions, except ratios) Secured by real estate Commercial and industrial Other (a) Total retained loans 2025 2024 2025 202",
+        "metadata": {
+          "form": "10-K",
+          "strategy": "structure_aware",
+          "section": "Body - MD&A and financials",
+          "company": "JPMC",
+          "period": "FY2025"
+        },
+        "rank": 5,
+        "rrf_score": 0.01639344262295082,
+        "found_in": {
+          "1": 1
+        },
+        "rerank_score": 5.192891597747803,
+        "rerank_rank": 1
+      },
+      {
+        "id": "JPMC_10-Q_Q2-2026_975",
+        "text": "ortfolio segment includes credit card loans originated and purchased by the Firm. Delinquency rates are the primary credit quality indicator for credit card loans. Refer to Note 12 of JPMorganChase's 2025 Form 10-K for further information on the credit card loan portfolio, including credit quality indicators. The following tables provide information on delinquency and gross charge-offs. As of or for the six months ended June\u00a030, 2026 (in millions, except ratios) Within the revolving period Conve",
+        "metadata": {
+          "form": "10-Q",
+          "strategy": "fixed_size",
+          "section": "none",
+          "period": "Q2-2026",
+          "company": "JPMC"
+        },
+        "rank": 1,
+        "rrf_score": 0.030776515151515152,
+        "found_in": {
+          "0": 6,
+          "1": 4
+        },
+        "rerank_score": 3.9216067790985107,
+        "rerank_rank": 2
+      },
+      {
+        "id": "JPMC_10-Q_Q2-2026_945",
+        "text": "ned loans $ 367,128 $ 368,741 Delinquency rates are the primary credit quality indicator for consumer loans. Refer to Note 12 of JPMorganChase's 2025 Form 10-K for further information on consumer credit quality indicators. 142 Residential real estate Delinquency is the primary credit quality indicator for retained residential real estate loans. The following tables provide information on delinquency and gross charge-offs. As of or for the six months ended June\u00a030, 2026 (in millions, except ratio",
+        "metadata": {
+          "strategy": "fixed_size",
+          "company": "JPMC",
+          "period": "Q2-2026",
+          "section": "none",
+          "form": "10-Q"
+        },
+        "rank": 3,
+        "rrf_score": 0.028693528693528692,
+        "found_in": {
+          "0": 18,
+          "1": 3
+        },
+        "rerank_score": 3.068983554840088,
+        "rerank_rank": 3
+      },
+      {
+        "id": "JPMC_10-K_FY2025_193",
+        "text": "it quality of counterparties, borrowers or other obligors not only in that industry or geography but also in related or dependent industries, wherever located. These conditions could also heighten concerns about the ability of customers of JPMorganChase\u2019s consumer businesses who live in those areas or work in those industries to meet their obligations. JPMorganChase\u2019s consumer businesses could also be harmed by an excessive expansion of consumer credit by competitors. Heightened competition for ",
+        "metadata": {
+          "section": "Item 1A - Risk Factors",
+          "form": "10-K",
+          "company": "JPMC",
+          "strategy": "structure_aware",
+          "period": "FY2025"
+        },
+        "rank": 7,
+        "rrf_score": 0.015873015873015872,
+        "found_in": {
+          "0": 3
+        },
+        "rerank_score": 2.8354508876800537,
+        "rerank_rank": 4
+      },
+      {
+        "id": "JPMC_10-K_FY2025_1971",
+        "text": " charge-off policy. JPMorgan Chase & Co./2025 Form 10-K 249 Notes to consolidated financial statements Wholesale loan portfolio Wholesale loans include loans made to a variety of clients, ranging from large corporate and institutional clients to small businesses and high-net-worth individuals. The primary credit quality indicator for wholesale loans is the internal risk rating assigned to each loan. Risk ratings are used to identify the credit quality of loans and differentiate risk within the p",
+        "metadata": {
+          "form": "10-K",
+          "company": "JPMC",
+          "period": "FY2025",
+          "section": "Body - MD&A and financials",
+          "strategy": "structure_aware"
+        },
+        "rank": 10,
+        "rrf_score": 0.015384615384615385,
+        "found_in": {
+          "1": 5
+        },
+        "rerank_score": 2.6526966094970703,
+        "rerank_rank": 5
+      }
+    ],
+    "confidence": 0.35,
+    "citation_verification": [],
+    "declined": true
+  },
+  "error": null,
+  "usage": {
+    "calls": 3,
+    "cost_usd": 0.00034,
+    "by_label": {
+      "classify": 0.00012,
+      "execute:rag": 0.00022
+    }
+  }
+}

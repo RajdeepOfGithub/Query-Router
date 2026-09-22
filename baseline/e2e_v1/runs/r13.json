@@ -1,0 +1,290 @@
+{
+  "id": "r13",
+  "question": "Noninterest expense rose in 2025. How large was the increase, and what were the main drivers?",
+  "expected_route": "both",
+  "route": "both",
+  "decision": {
+    "route": "both",
+    "confidence": 0.9,
+    "reasoning": "The question asks for the size of the increase in noninterest expense, which is a reported figure, and also seeks to understand the main drivers behind that increase, which requires explanation and context.",
+    "ambiguity_disclosure": null
+  },
+  "routing_correct": true,
+  "answer_type": "value+claims",
+  "values": {
+    "FY2025 noninterest expense": true,
+    "FY2024 noninterest expense": false
+  },
+  "claims_score": 1.0,
+  "answer_correct": false,
+  "final_answer": "The figure, from structured XBRL data [SQL]:\n$95,640M for 2025-01-01 to 2025-12-31.\nMeasure: Noninterest Expense (us-gaap:NoninterestExpense).\nWhy this variant: Selected the consolidated variant with no dimensions as it represents the total noninterest expense.\n\nExplanation, from the filings and earnings call:\nNoninterest expense was $95.6 billion in 2025, which represents an increase of 4% compared to the previous year. The main drivers of this increase included higher compensation expense, including higher revenue-related compensation and growth in the number of employees, as well as higher brokerage expense, distribution fees, auto lease depreciation, and continued investments in technology and marketing. These factors were partially offset by FDIC special assessment accrual releases of $763 million [RAG-2][RAG-3].\n\nCaution: financial-rag's own citation check did not confirm 2 of 2 cited claims in the explanation.\n\nFigure check against structured data (explanation drawn from FY2025 filings):\n- Unconfirmed: the explanation states $763 million (no period stated), which matches no structured figure. Where it describes the same item, the [SQL] figures take precedence.\n\nSources:\n[SQL] Text-to-SQL over XBRL facts: us-gaap:NoninterestExpense (consolidated), 2025-01-01 to 2025-12-31; status=answered, confidence=1.0 (not flagged)\n[RAG-2] financial-rag passage JPMC_10-K_FY2025_451 (10-K, FY2025, Body - MD&A and financials); citation NOT supported by passage\n[RAG-3] financial-rag passage JPMC_10-K_FY2025_450 (10-K, FY2025, Body - MD&A and financials); citation NOT supported by passage",
+  "conflicts": [
+    {
+      "rag_figure": "$763 million",
+      "rag_value": 763000000.0,
+      "rag_period": null,
+      "period_basis": "period unconfirmed",
+      "rag_filing_periods": [
+        "FY2025"
+      ],
+      "kind": "unmatched",
+      "resolution": "not confirmed by structured data; SQL figures take precedence where they describe the same item"
+    }
+  ],
+  "sql_raw": {
+    "answer": {
+      "question": "Noninterest expense rose in 2025. How large was the increase, and what were the main drivers?",
+      "status": "answered",
+      "text": "$95,640M for 2025-01-01 to 2025-12-31.\nMeasure: Noninterest Expense (us-gaap:NoninterestExpense).\nWhy this variant: Selected the consolidated variant with no dimensions as it represents the total noninterest expense.",
+      "sql": "SELECT concept, dimensions_json, period_start, period_end, value_numeric, unit, source_document FROM facts WHERE concept = 'us-gaap:NoninterestExpense' AND dimensions_json = '{}' AND period_start = '2025-01-01' AND period_end = '2025-12-31'",
+      "plan": {
+        "intent": "read",
+        "not_available_reason": null,
+        "reasoning": "The concept 'us-gaap:NoninterestExpense' for FY2025 shows the total noninterest expense, which is relevant to understanding the increase. The most recent period available is FY2025. I am selecting the consolidated variant with no dimensions as it represents the total noninterest expense.",
+        "sql": "SELECT concept, dimensions_json, period_start, period_end, value_numeric, unit, source_document FROM facts WHERE concept = 'us-gaap:NoninterestExpense' AND dimensions_json = '{}' AND period_start = '2025-01-01' AND period_end = '2025-12-31'",
+        "target": {
+          "concept": "us-gaap:NoninterestExpense",
+          "dimensions_json": "{}"
+        },
+        "target_period_start": "2025-01-01",
+        "target_period_end": "2025-12-31",
+        "ambiguity": "none",
+        "chosen_dimension_reason": "Selected the consolidated variant with no dimensions as it represents the total noninterest expense.",
+        "alternatives": [],
+        "clarification_question": null
+      },
+      "measure": {
+        "concept": "us-gaap:NoninterestExpense",
+        "dimensions_json": "{}",
+        "period_start": "2025-01-01",
+        "period_end": "2025-12-31",
+        "value_numeric": 95640000000.0,
+        "unit": "iso4217:USD",
+        "label": "Noninterest Expense",
+        "dimension_labels": {}
+      },
+      "alternatives": [],
+      "ambiguity": "none",
+      "rows": [
+        [
+          "us-gaap:NoninterestExpense",
+          "{}",
+          "2025-01-01",
+          "2025-12-31",
+          95640000000.0,
+          "iso4217:USD",
+          "JPMC_10-K_FY2025"
+        ]
+      ],
+      "columns": [
+        "concept",
+        "dimensions_json",
+        "period_start",
+        "period_end",
+        "value_numeric",
+        "unit",
+        "source_document"
+      ],
+      "block_reason": null,
+      "reason": null,
+      "system_notes": []
+    },
+    "confidence": {
+      "score": 1.0,
+      "flagged": false,
+      "reasons": [],
+      "components": {
+        "back_translation": 1.0,
+        "magnitude": 1.0,
+        "unit_scale": 1.0
+      },
+      "back_translation": {
+        "original_question": "Noninterest expense rose in 2025. How large was the increase, and what were the main drivers?",
+        "back_translated_question": "What is the total noninterest expense for the firm-wide consolidated total for the year ended December 31, 2025?",
+        "judgment": {
+          "original_metric": "Noninterest expense",
+          "original_period": "2025",
+          "original_scope": "firm-wide consolidated total",
+          "back_translated_metric": "total noninterest expense",
+          "back_translated_period": "year ended December 31, 2025",
+          "back_translated_scope": "firm-wide consolidated total",
+          "metric": "match",
+          "period": "match",
+          "scope": "match",
+          "explanation": "Both questions refer to noninterest expense for the firm-wide consolidated total in 2025."
+        },
+        "period_source": "code"
+      },
+      "sanity": {
+        "checks": [
+          {
+            "name": "non_null",
+            "status": "pass",
+            "detail": "1 row(s), value present"
+          },
+          {
+            "name": "magnitude",
+            "status": "pass",
+            "detail": "2 comparable year value(s), median 89,484,500,000"
+          },
+          {
+            "name": "unit_scale",
+            "status": "pass",
+            "detail": "answer figure 95,640,000,000 matches fact (iso4217:USD)"
+          }
+        ]
+      },
+      "notes": []
+    }
+  },
+  "rag_raw": {
+    "question": "Noninterest expense rose in 2025. How large was the increase, and what were the main drivers?",
+    "answer_text": "Noninterest expense was $95.6 billion in 2025, which represents an increase of 4% compared to the previous year. The main drivers of this increase included higher compensation expense, including higher revenue-related compensation and growth in the number of employees, as well as higher brokerage expense, distribution fees, auto lease depreciation, and continued investments in technology and marketing. These factors were partially offset by FDIC special assessment accrual releases of $763 million [2][3].",
+    "citations": [
+      {
+        "number": 2,
+        "chunk_id": "JPMC_10-K_FY2025_451",
+        "metadata": {
+          "form": "10-K",
+          "period": "FY2025",
+          "company": "JPMC",
+          "section": "Body - MD&A and financials",
+          "strategy": "structure_aware"
+        }
+      },
+      {
+        "number": 3,
+        "chunk_id": "JPMC_10-K_FY2025_450",
+        "metadata": {
+          "strategy": "structure_aware",
+          "section": "Body - MD&A and financials",
+          "company": "JPMC",
+          "form": "10-K",
+          "period": "FY2025"
+        }
+      }
+    ],
+    "retrieved_chunks": [
+      {
+        "id": "JPMC_10-K_FY2025_670",
+        "text": "ent agency MBS and U.S. Treasuries, and \u2022 the $588 million First Republic-related gain recorded in the first quarter of 2025. Noninterest expense was $1.8 billion, down 54%, primarily driven by: \u2022 lower FDIC-related expense driven by releases of FDIC special assessment accruals of $763 million, compared with an accrual increase of $725 million in the first quarter of the prior year, and \u2022 the absence of the following items recorded in the prior year \u2013 a $1.0 billion contribution of Visa shares t",
+        "metadata": {
+          "period": "FY2025",
+          "strategy": "structure_aware",
+          "company": "JPMC",
+          "form": "10-K",
+          "section": "Body - MD&A and financials"
+        },
+        "rank": 8,
+        "rrf_score": 0.015625,
+        "found_in": {
+          "1": 4
+        },
+        "rerank_score": 2.8461694717407227,
+        "rerank_rank": 1
+      },
+      {
+        "id": "JPMC_10-K_FY2025_451",
+        "text": "urrent year. \u2022 Noninterest expense was $95.6 billion, up 4%, driven by higher compensation expense, including higher revenue-related compensation and growth in the number of employees. The increase in expense was also driven by higher brokerage expense and distribution fees, higher auto lease depreciation, and continued investments in technology and marketing, as well as higher occupancy expense. These factors were partially offset by FDIC special assessment accrual releases of $763 million comp",
+        "metadata": {
+          "form": "10-K",
+          "period": "FY2025",
+          "company": "JPMC",
+          "section": "Body - MD&A and financials",
+          "strategy": "structure_aware"
+        },
+        "rank": 1,
+        "rrf_score": 0.03278688524590164,
+        "found_in": {
+          "0": 1,
+          "1": 1
+        },
+        "rerank_score": 2.008225440979004,
+        "rerank_rank": 2
+      },
+      {
+        "id": "JPMC_10-K_FY2025_450",
+        "text": "gement fees in AWM and CCB, higher auto operating lease income, lower net investment securities losses in Treasury and CIO, higher Payments fees, higher investment banking fees, and a $588 million First Republic-related gain recorded in the first quarter of 2025. These increases were predominantly offset by the absence of the $7.9 billion net gain related to Visa shares recorded in the second quarter of 2024, as well as lower card income in the current year. \u2022 Noninterest expense was $95.6 billi",
+        "metadata": {
+          "strategy": "structure_aware",
+          "section": "Body - MD&A and financials",
+          "company": "JPMC",
+          "form": "10-K",
+          "period": "FY2025"
+        },
+        "rank": 28,
+        "rrf_score": 0.013157894736842105,
+        "found_in": {
+          "0": 16
+        },
+        "rerank_score": 1.838200569152832,
+        "rerank_rank": 3
+      },
+      {
+        "id": "JPMC_10-Q_Q2-2026_164",
+        "text": "act of increased debit and credit card sales volume was more than offset by higher rewards costs and partner payments. Noninterest expense was $22.1 billion, up 12%, reflecting: \u2022 higher noncompensation expense, predominantly driven by continued investments in marketing and technology, higher auto lease depreciation on higher auto operating lease assets and higher legal expense, as well as \u2022 higher compensation expense, predominantly for advisors and bankers, including higher revenue-related com",
+        "metadata": {
+          "strategy": "fixed_size",
+          "section": "none",
+          "company": "JPMC",
+          "form": "10-Q",
+          "period": "Q2-2026"
+        },
+        "rank": 5,
+        "rrf_score": 0.015873015873015872,
+        "found_in": {
+          "0": 3
+        },
+        "rerank_score": 0.7672725319862366,
+        "rerank_rank": 4
+      },
+      {
+        "id": "JPMC_10-K_FY2025_1765",
+        "text": "Notes 1, 14 and 25 for additional information. Noninterest expense Other expense Other expense on the Firm\u2019s Consolidated statements of income included: Year ended December 31, (in millions) 2025 2024 2023 Legal expense $ 361 $ 740 $ 1,436 FDIC-related expense (a) 531 1,893 4,203 Operating losses 1,292 1,417 1,228 Contribution of Visa shares \u2014 1,000 (b) \u2014 (a)  Included FDIC special assessment accrual releases of $ 763 million and an accrual increase of $ 725 million for the years ended December\u00a0",
+        "metadata": {
+          "form": "10-K",
+          "period": "FY2025",
+          "company": "JPMC",
+          "strategy": "structure_aware",
+          "section": "Body - MD&A and financials"
+        },
+        "rank": 2,
+        "rrf_score": 0.0315136476426799,
+        "found_in": {
+          "0": 5,
+          "1": 2
+        },
+        "rerank_score": 0.23393186926841736,
+        "rerank_rank": 5
+      }
+    ],
+    "confidence": 0.353,
+    "citation_verification": [
+      {
+        "number": 2,
+        "chunk_id": "JPMC_10-K_FY2025_451",
+        "claim": "Noninterest expense was $95.6 billion in 2025, which represents an increase of 4% compared to the previous year. The main drivers of this increase included higher compensation expense, including higher revenue-related compensation and growth in the number of employees, as well as higher brokerage expense, distribution fees, auto lease depreciation, and continued investments in technology and marketing. These factors were partially offset by FDIC special assessment accrual releases of $763 million",
+        "supported": false,
+        "reason": "The passage does not specify the year as 2025."
+      },
+      {
+        "number": 3,
+        "chunk_id": "JPMC_10-K_FY2025_450",
+        "claim": "Noninterest expense was $95.6 billion in 2025, which represents an increase of 4% compared to the previous year. The main drivers of this increase included higher compensation expense, including higher revenue-related compensation and growth in the number of employees, as well as higher brokerage expense, distribution fees, auto lease depreciation, and continued investments in technology and marketing. These factors were partially offset by FDIC special assessment accrual releases of $763 million",
+        "supported": false,
+        "reason": "The passage does not mention the 4% increase or the specific drivers of the increase."
+      }
+    ],
+    "declined": false
+  },
+  "error": null,
+  "usage": {
+    "calls": 10,
+    "cost_usd": 0.00184,
+    "by_label": {
+      "classify": 0.00013,
+      "execute:both": 0.00162,
+      "grade": 9e-05
+    }
+  }
+}

@@ -63,3 +63,29 @@ incompatible jiter versions.
 
 Test run: 3/3 routing tests pass, $0.00297 measured. The real "both" example is in
 `baseline/phase2_both_example.json`.
+
+## Phase 3: end-to-end eval (e2e v1, frozen)
+
+`python src/run_router_eval.py --confirm` sends all 18 questions through `router.answer()`
+(classify, execute, merge) and grades two things separately:
+- routing_correct: Phase 1's rule
+- answer_correct: judged against `data/router_answer_truth.jsonl`. SQL values come from
+  Text-to-SQL's verified set, RAG claims from financial-rag's set, and "both" drivers from the
+  cited filing passages. Project 1's own `value_present` and `claims_score` do the checking.
+
+| expected route | routing | answer |
+|---|---|---|
+| sql | 7/7 | 6/7 |
+| rag | 2/4 | 1/4 |
+| both | 4/4 | 1/4 |
+| ambiguous | 0/3 | 0/3 |
+| **overall** | **13/18** | **8/18** |
+
+- Routing right, answer wrong: r07, r09, r12, r14 (RAG explanations miss the filing's drivers),
+  r13 (gives the increase as "4%", not the FY2024 figure the truth requires), r15 (diluted EPS
+  instead of net income, Project 2's e07 failure).
+- Routing wrong, answer right: r08.
+- r16 routed to "both" this run but without a disclosure (it had one in the routing-only v2
+  run), so the classifier isn't stable run to run at temperature 0.
+
+Cost $0.0213 (118 calls).

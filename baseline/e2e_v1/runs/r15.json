@@ -1,0 +1,151 @@
+{
+  "id": "r15",
+  "question": "How much did they earn in Q2 2026?",
+  "expected_route": "sql",
+  "route": "sql",
+  "decision": {
+    "route": "sql",
+    "confidence": 0.9,
+    "reasoning": "The question specifically asks for a reported financial figure, which is available in the SQL backend.",
+    "ambiguity_disclosure": null
+  },
+  "routing_correct": true,
+  "answer_type": "value",
+  "values": {
+    "Q2 2026 net income (headline)": false
+  },
+  "answer_correct": false,
+  "final_answer": "$7.70 per share for 2026-04-01 to 2026-06-30.\nMeasure: Earnings Per Share, Diluted (us-gaap:EarningsPerShareDiluted).\nOther measures in the filing that could also answer this question:\n  - Earnings Per Share, Basic (us-gaap:EarningsPerShareBasic): $7.71 per share",
+  "conflicts": [],
+  "sql_raw": {
+    "answer": {
+      "question": "How much did they earn in Q2 2026?",
+      "status": "answered",
+      "text": "$7.70 per share for 2026-04-01 to 2026-06-30.\nMeasure: Earnings Per Share, Diluted (us-gaap:EarningsPerShareDiluted).\nOther measures in the filing that could also answer this question:\n  - Earnings Per Share, Basic (us-gaap:EarningsPerShareBasic): $7.71 per share",
+      "sql": "SELECT concept, dimensions_json, period_start, period_end, value_numeric, unit, source_document FROM facts WHERE concept = 'us-gaap:EarningsPerShareDiluted' AND dimensions_json = '{}' AND period_start = '2026-04-01' AND period_end = '2026-06-30'",
+      "plan": {
+        "intent": "read",
+        "not_available_reason": null,
+        "reasoning": "The concept 'us-gaap:EarningsPerShareDiluted' for Q2 2026 provides a measure of earnings per share, which is a standard way to report earnings.",
+        "sql": "SELECT concept, dimensions_json, period_start, period_end, value_numeric, unit, source_document FROM facts WHERE concept = 'us-gaap:EarningsPerShareDiluted' AND dimensions_json = '{}' AND period_start = '2026-04-01' AND period_end = '2026-06-30'",
+        "target": {
+          "concept": "us-gaap:EarningsPerShareDiluted",
+          "dimensions_json": "{}"
+        },
+        "target_period_start": "2026-04-01",
+        "target_period_end": "2026-06-30",
+        "ambiguity": "none",
+        "chosen_dimension_reason": null,
+        "alternatives": [],
+        "clarification_question": null
+      },
+      "measure": {
+        "concept": "us-gaap:EarningsPerShareDiluted",
+        "dimensions_json": "{}",
+        "period_start": "2026-04-01",
+        "period_end": "2026-06-30",
+        "value_numeric": 7.7,
+        "unit": "iso4217:USD/xbrli:shares",
+        "label": "Earnings Per Share, Diluted",
+        "dimension_labels": {}
+      },
+      "alternatives": [
+        {
+          "concept": "us-gaap:EarningsPerShareBasic",
+          "dimensions_json": "{}",
+          "period_start": "2026-04-01",
+          "period_end": "2026-06-30",
+          "value_numeric": 7.71,
+          "unit": "iso4217:USD/xbrli:shares",
+          "label": "Earnings Per Share, Basic",
+          "dimension_labels": {}
+        }
+      ],
+      "ambiguity": "picked_headline",
+      "rows": [
+        [
+          "us-gaap:EarningsPerShareDiluted",
+          "{}",
+          "2026-04-01",
+          "2026-06-30",
+          7.7,
+          "iso4217:USD/xbrli:shares",
+          "JPMC_10-Q_Q2-2026"
+        ]
+      ],
+      "columns": [
+        "concept",
+        "dimensions_json",
+        "period_start",
+        "period_end",
+        "value_numeric",
+        "unit",
+        "source_document"
+      ],
+      "block_reason": null,
+      "reason": null,
+      "system_notes": [
+        "system added undisclosed near-value alternative us-gaap:EarningsPerShareBasic {}"
+      ]
+    },
+    "confidence": {
+      "score": 0.4,
+      "flagged": true,
+      "reasons": [
+        "back-translation mismatch on metric, scope: SQL answers 'What is the diluted earnings per share for JPMorgan Chase for the three months ended June 30, 2026?' (The original question asks for total earnings, while the back-translated question specifies diluted earnings per share and a specific firm.)"
+      ],
+      "components": {
+        "back_translation": 0.0,
+        "magnitude": 1.0,
+        "unit_scale": 1.0
+      },
+      "back_translation": {
+        "original_question": "How much did they earn in Q2 2026?",
+        "back_translated_question": "What is the diluted earnings per share for JPMorgan Chase for the three months ended June 30, 2026?",
+        "judgment": {
+          "original_metric": "earn",
+          "original_period": "Q2 2026",
+          "original_scope": "firm-wide consolidated total",
+          "back_translated_metric": "diluted earnings per share",
+          "back_translated_period": "three months ended June 30, 2026",
+          "back_translated_scope": "JPMorgan Chase",
+          "metric": "mismatch",
+          "period": "match",
+          "scope": "mismatch",
+          "explanation": "The original question asks for total earnings, while the back-translated question specifies diluted earnings per share and a specific firm."
+        },
+        "period_source": "code"
+      },
+      "sanity": {
+        "checks": [
+          {
+            "name": "non_null",
+            "status": "pass",
+            "detail": "1 row(s), value present"
+          },
+          {
+            "name": "magnitude",
+            "status": "pass",
+            "detail": "1 comparable quarter value(s), median 5"
+          },
+          {
+            "name": "unit_scale",
+            "status": "pass",
+            "detail": "answer figure 8 matches fact (iso4217:USD/xbrli:shares)"
+          }
+        ]
+      },
+      "notes": []
+    }
+  },
+  "rag_raw": null,
+  "error": null,
+  "usage": {
+    "calls": 4,
+    "cost_usd": 0.00083,
+    "by_label": {
+      "classify": 0.00012,
+      "execute:sql": 0.00072
+    }
+  }
+}

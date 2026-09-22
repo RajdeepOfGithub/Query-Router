@@ -1,0 +1,214 @@
+{
+  "id": "r10",
+  "question": "Why was the NII excluding Markets guidance revised upward, and to what figure?",
+  "expected_route": "rag",
+  "route": "both",
+  "decision": {
+    "route": "both",
+    "confidence": 0.9,
+    "reasoning": "The question asks for both the revised figure for NII excluding Markets and the reasons behind the upward revision, which requires information from both reported figures and commentary.",
+    "ambiguity_disclosure": null
+  },
+  "routing_correct": false,
+  "answer_type": "value+claims",
+  "values": {
+    "revised NII ex-Markets guidance": true
+  },
+  "claims_score": 0.5,
+  "answer_correct": false,
+  "final_answer": "The figure could not be retrieved from structured data [SQL]: Not available in JPMorgan Chase's 10-K FY2025 and 10-Q Q2 2026 XBRL facts: The concept of NII excluding Markets guidance is not present in the schema.\n\nExplanation, from the filings and earnings call:\nThe NII excluding Markets guidance was revised upward from $95 billion to $96.5 billion for the full year [RAG-1]. The upward revision was influenced by factors such as higher revolving balances in Card Services, higher wholesale deposit balances, and the impact of investment securities activity, although these were partially offset by deposit margin compression and the impact of lower rates [RAG-2].\n\nSources:\n[SQL] Text-to-SQL over XBRL facts: status=not_available, confidence=1.0 (not flagged)\n[RAG-1] financial-rag passage JPMC_earnings_call_Q2-2026_31 (earnings_call, Q2-2026); citation verified\n[RAG-2] financial-rag passage JPMC_10-K_FY2025_449 (10-K, FY2025, Body - MD&A and financials); citation verified",
+  "conflicts": [],
+  "sql_raw": {
+    "answer": {
+      "question": "Why was the NII excluding Markets guidance revised upward, and to what figure?",
+      "status": "not_available",
+      "text": "Not available in JPMorgan Chase's 10-K FY2025 and 10-Q Q2 2026 XBRL facts: The concept of NII excluding Markets guidance is not present in the schema.",
+      "sql": null,
+      "plan": {
+        "intent": "not_available",
+        "not_available_reason": "The concept of NII excluding Markets guidance is not present in the schema.",
+        "reasoning": "The question asks for a specific financial metric (NII excluding Markets) that is not defined in the available concepts.",
+        "sql": null,
+        "target": null,
+        "target_period_start": null,
+        "target_period_end": null,
+        "ambiguity": "none",
+        "chosen_dimension_reason": null,
+        "alternatives": [],
+        "clarification_question": null
+      },
+      "measure": null,
+      "alternatives": [],
+      "ambiguity": "none",
+      "rows": [],
+      "columns": [],
+      "block_reason": null,
+      "reason": "The concept of NII excluding Markets guidance is not present in the schema.",
+      "system_notes": []
+    },
+    "confidence": {
+      "score": 1.0,
+      "flagged": false,
+      "reasons": [],
+      "components": {},
+      "back_translation": null,
+      "sanity": null,
+      "notes": [
+        "not scored: status=not_available"
+      ]
+    }
+  },
+  "rag_raw": {
+    "question": "Why was the NII excluding Markets guidance revised upward, and to what figure?",
+    "answer_text": "The NII excluding Markets guidance was revised upward from $95 billion to $96.5 billion for the full year [1]. The upward revision was influenced by factors such as higher revolving balances in Card Services, higher wholesale deposit balances, and the impact of investment securities activity, although these were partially offset by deposit margin compression and the impact of lower rates [2].",
+    "citations": [
+      {
+        "number": 1,
+        "chunk_id": "JPMC_earnings_call_Q2-2026_31",
+        "metadata": {
+          "period": "Q2-2026",
+          "strategy": "fixed_size",
+          "form": "earnings_call",
+          "section": "none",
+          "company": "JPMC"
+        }
+      },
+      {
+        "number": 2,
+        "chunk_id": "JPMC_10-K_FY2025_449",
+        "metadata": {
+          "form": "10-K",
+          "company": "JPMC",
+          "section": "Body - MD&A and financials",
+          "strategy": "structure_aware",
+          "period": "FY2025"
+        }
+      }
+    ],
+    "retrieved_chunks": [
+      {
+        "id": "JPMC_earnings_call_Q2-2026_31",
+        "text": " was wondering if you could talk a little bit about the drivers of the upward revision to the NII ex-Markets on perhaps the cadence too in third quarter, fourth quarter, as we think about the exit rate heading into next year. Jeremy Barnum: Sure, John. Revising up from $95 billion to $96.5 billion for the full year, and you see our first half actual, so you can infer the second half. As Jamie always likes to say, what matters is the run rates and the exit. If you sort of do that math, it does su",
+        "metadata": {
+          "period": "Q2-2026",
+          "strategy": "fixed_size",
+          "form": "earnings_call",
+          "section": "none",
+          "company": "JPMC"
+        },
+        "rank": 3,
+        "rrf_score": 0.031746031746031744,
+        "found_in": {
+          "0": 3,
+          "1": 3
+        },
+        "rerank_score": 2.682602643966675,
+        "rerank_rank": 1
+      },
+      {
+        "id": "JPMC_10-K_FY2025_449",
+        "text": "ets net interest income, higher revolving balances in Card Services, higher wholesale deposit balances, and the impact of investment securities activity. These factors were largely offset by deposit margin compression and the impact of lower rates. NII excluding Markets was $92.6 billion, flat when compared with the prior year. \u2013 Noninterest revenue (\u201cNIR\u201d) was $87.0 billion, up 2%, reflecting higher Markets noninterest revenue, higher asset management fees in AWM and CCB, higher auto operating ",
+        "metadata": {
+          "form": "10-K",
+          "company": "JPMC",
+          "section": "Body - MD&A and financials",
+          "strategy": "structure_aware",
+          "period": "FY2025"
+        },
+        "rank": 7,
+        "rrf_score": 0.02946912242686891,
+        "found_in": {
+          "0": 11,
+          "1": 5
+        },
+        "rerank_score": 0.8333992958068848,
+        "rerank_rank": 2
+      },
+      {
+        "id": "JPMC_10-Q_Q2-2026_46",
+        "text": "lly offset by the impact of lower 5 rates. NII excluding Markets was $23.7 billion, up 4%. \u2013 Noninterest revenue (\"NIR\") was $31.8 billion, up 47%, predominantly driven by the $4.6 billion net gain related to Visa shares, higher Markets noninterest revenue, $1.0 billion of gains on certain equity investments, higher asset management fees in AWM and CCB, higher investment banking fees, and higher auto operating lease income, partially offset by higher net investment securities losses in Treasury ",
+        "metadata": {
+          "company": "JPMC",
+          "period": "Q2-2026",
+          "section": "none",
+          "strategy": "fixed_size",
+          "form": "10-Q"
+        },
+        "rank": 6,
+        "rrf_score": 0.029631255487269532,
+        "found_in": {
+          "0": 7,
+          "1": 8
+        },
+        "rerank_score": 0.4474959671497345,
+        "rerank_rank": 3
+      },
+      {
+        "id": "JPMC_earnings_call_Q2-2026_67",
+        "text": "le of questions about this and obviously we did revise up this year's expense guidance by $2.5 billion, which is not a trivial number. Maybe I can piece all this together to add a little bit of clarity here. First of all, if you remember the guidance that we gave in fourth quarter last year for the full year for the company, and if you made some kind of reasonable assumptions about what type of markets environment and NII ex-Markets for the rest of the company at the time, and you build out your",
+        "metadata": {
+          "section": "none",
+          "strategy": "fixed_size",
+          "company": "JPMC",
+          "form": "earnings_call",
+          "period": "Q2-2026"
+        },
+        "rank": 1,
+        "rrf_score": 0.03252247488101534,
+        "found_in": {
+          "0": 2,
+          "1": 1
+        },
+        "rerank_score": -0.4620607793331146,
+        "rerank_rank": 4
+      },
+      {
+        "id": "JPMC_earnings_call_Q2-2026_38",
+        "text": "That obviously comes with a little bit of NII, that NII is moving out of NII ex-Markets into markets NII. It's sort of a rare exception to the rule that changes in markets NII are offset in the bottom line. This piece, which to be fair, is quite small, it's probably like $150 million, is a part of the increase that we would not expect to be offset on the bottom line, all else equal. Obviously it's left pocket, right pocket at the level of the company. John McDonald: Okay, that's helpful. Thank y",
+        "metadata": {
+          "form": "earnings_call",
+          "company": "JPMC",
+          "section": "none",
+          "strategy": "fixed_size",
+          "period": "Q2-2026"
+        },
+        "rank": 2,
+        "rrf_score": 0.031754032258064516,
+        "found_in": {
+          "0": 4,
+          "1": 2
+        },
+        "rerank_score": -1.3619043827056885,
+        "rerank_rank": 5
+      }
+    ],
+    "confidence": 0.974,
+    "citation_verification": [
+      {
+        "number": 1,
+        "chunk_id": "JPMC_earnings_call_Q2-2026_31",
+        "claim": "The NII excluding Markets guidance was revised upward from $95 billion to $96.5 billion for the full year",
+        "supported": true,
+        "reason": "The passage states the NII ex-Markets revision from $95 billion to $96.5 billion."
+      },
+      {
+        "number": 2,
+        "chunk_id": "JPMC_10-K_FY2025_449",
+        "claim": ". The upward revision was influenced by factors such as higher revolving balances in Card Services, higher wholesale deposit balances, and the impact of investment securities activity, although these were partially offset by deposit margin compression and the impact of lower rates",
+        "supported": true,
+        "reason": "The passage mentions all factors influencing the upward revision."
+      }
+    ],
+    "declined": false
+  },
+  "error": null,
+  "usage": {
+    "calls": 7,
+    "cost_usd": 0.00109,
+    "by_label": {
+      "classify": 0.00012,
+      "execute:both": 0.0009,
+      "grade": 7e-05
+    }
+  }
+}
