@@ -1,30 +1,37 @@
 {
   "question": "By how much did investment banking fees grow in Q2 2026 versus Q2 2025, and what drove the growth?",
   "route": "both",
-  "answer": "The figures, from structured XBRL data [SQL]:\n- us-gaap:InvestmentBankingRevenue, 2025-04-01 to 2025-06-30: $2,499M\n- us-gaap:InvestmentBankingRevenue, 2026-04-01 to 2026-06-30: $3,208M\n\nExplanation, from the filings and earnings call:\nInvestment banking fees grew by 30%, increasing from $3,277 million in Q2 2025 to $4,761 million in Q2 2026. The growth was driven by higher fees across products, with specific increases in equity underwriting fees, which were up 65%, and advisory fees, which were up 48% due to higher fees from deals in the Diversified Industries [RAG-1][RAG-5].\n\nCaution: financial-rag's own citation check did not confirm 2 of 2 cited claims in the explanation.\n\nFigure conflict: the explanation states $3,277 million; the structured data has $3,208M for us-gaap:InvestmentBankingRevenue (2026-04-01 to 2026-06-30). The structured [SQL] figure is used.\n\nThe explanation also cites $4,761 million, which don't match any structured figure above. Where they describe the same item, the [SQL] figures take precedence.\n\nSources:\n[SQL] Text-to-SQL over XBRL facts: status=answered, confidence=0.0 (FLAGGED: back-translation mismatch on metric, scope: SQL answers 'What was the Investment Banking Revenue for JPMorgan Chase for the three months ended June 30, 2026, and for the three months ended June 30, 2025?' (The original question asks about growth in investment banking fees, while the back-translation refers specifically to Investment Banking Revenue for JPMorgan Chase.); sanity non_null: result value is null); query: SELECT concept, dimensions_json, period_start, period_end, value_numeric, unit, source_document FROM facts WHERE concept = 'us-gaap:InvestmentBankingRevenue' AND dimensions_json = '{}' AND period_start = '2026-04-01' AND period_end = '2026-06-30' UNION SELECT concept, dimensions_json, period_start, period_end, value_numeric, unit, source_document FROM facts WHERE concept = 'us-gaap:InvestmentBankingRevenue' AND dimensions_json = '{}' AND period_start = '2025-04-01' AND period_end = '2025-06-30'\n[RAG-1] financial-rag passage JPMC_10-Q_Q2-2026_197 (10-Q, Q2-2026); citation NOT supported by passage\n[RAG-5] financial-rag passage JPMC_10-Q_Q2-2026_180 (10-Q, Q2-2026); citation NOT supported by passage",
+  "answer": "The figures, from structured XBRL data [SQL]:\n- us-gaap:InvestmentBankingRevenue, 2025-04-01 to 2025-06-30: $2,499M\n- us-gaap:InvestmentBankingRevenue, 2026-04-01 to 2026-06-30: $3,208M\n\nExplanation, from the filings and earnings call:\nInvestment banking fees grew by 30%, increasing from $3,277 million in Q2 2025 to $4,761 million in Q2 2026. The growth was driven by higher fees across products, with specific increases in equity underwriting fees, which were up 65%, and advisory fees, which were up 48% due to higher fees from deals in the Diversified Industries [RAG-1][RAG-5].\n\nCaution: financial-rag's own citation check did not confirm 2 of 2 cited claims in the explanation.\n\nFigure check against structured data (explanation drawn from Q2-2026 filings):\n- Unconfirmed: the explanation states $3,277 million (2025-04-01 to 2025-06-30), which matches no structured figure for that period (possibly a different measure). Where it describes the same item, the [SQL] figure takes precedence.\n- Unconfirmed: the explanation states $4,761 million (2026-04-01 to 2026-06-30), which matches no structured figure for that period (possibly a different measure). Where it describes the same item, the [SQL] figure takes precedence.\n\nSources:\n[SQL] Text-to-SQL over XBRL facts: status=answered, confidence=0.0 (FLAGGED: back-translation mismatch on metric, scope: SQL answers 'What was the Investment Banking Revenue for JPMorgan Chase for the three months ended June 30, 2026, and for the three months ended June 30, 2025?' (The original question asks about growth in investment banking fees, while the back-translation refers specifically to Investment Banking Revenue for JPMorgan Chase.); sanity non_null: result value is null); query: SELECT concept, dimensions_json, period_start, period_end, value_numeric, unit, source_document FROM facts WHERE concept = 'us-gaap:InvestmentBankingRevenue' AND dimensions_json = '{}' AND period_start = '2026-04-01' AND period_end = '2026-06-30' UNION SELECT concept, dimensions_json, period_start, period_end, value_numeric, unit, source_document FROM facts WHERE concept = 'us-gaap:InvestmentBankingRevenue' AND dimensions_json = '{}' AND period_start = '2025-04-01' AND period_end = '2025-06-30'\n[RAG-1] financial-rag passage JPMC_10-Q_Q2-2026_197 (10-Q, Q2-2026); citation NOT supported by passage\n[RAG-5] financial-rag passage JPMC_10-Q_Q2-2026_180 (10-Q, Q2-2026); citation NOT supported by passage",
   "conflicts": [
     {
-      "kind": "conflict",
       "rag_figure": "$3,277 million",
       "rag_value": 3277000000.0,
-      "sql_value": 3208000000.0,
-      "sql_concept": "us-gaap:InvestmentBankingRevenue",
-      "sql_period": "2026-04-01 to 2026-06-30",
-      "resolution": "SQL figure used; RAG figure superseded"
+      "rag_period": "2025-04-01 to 2025-06-30",
+      "period_basis": "stated in answer text",
+      "rag_filing_periods": [
+        "Q2-2026"
+      ],
+      "kind": "unmatched_same_period",
+      "resolution": "not confirmed by structured data; SQL figures take precedence where they describe the same item"
     },
     {
-      "kind": "unmatched",
       "rag_figure": "$4,761 million",
       "rag_value": 4761000000.0,
+      "rag_period": "2026-04-01 to 2026-06-30",
+      "period_basis": "stated in answer text",
+      "rag_filing_periods": [
+        "Q2-2026"
+      ],
+      "kind": "unmatched_same_period",
       "resolution": "not confirmed by structured data; SQL figures take precedence where they describe the same item"
     }
   ],
   "usage": {
     "calls": 8,
-    "cost_usd": 0.00103,
+    "cost_usd": 0.00104,
     "by_label": {
       "classify": 0.00013,
-      "execute:both": 0.0009
+      "execute:both": 0.00091
     }
   }
 }
